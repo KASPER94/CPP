@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 12:16:00 by skapersk          #+#    #+#             */
-/*   Updated: 2024/07/29 14:50:40 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/07/29 18:33:51 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,26 @@
 
 class Contact {
 	private:
-		std::string	first_name;
-		std::string	last_name;
-		std::string	nickname;
-		std::string	phone_number;
-		std::string	darkest_secret;
+		std::string	_first_name;
+		std::string	_last_name;
+		std::string	_nickname;
+		std::string	_phone_number;
+		std::string	_darkest_secret;
 
 	public:
 		Contact(void);
 		~Contact(void);
 		
-}
+		void		set_first_name(void);
+		void		set_last_name(void);
+		void		set_nickname(void);
+		void		set_phone_number(void);
+		void		set_darkest_secret(void);
+		std::string	get_first_name(void);
+		std::string	get_last_name(void);
+		std::string	get_nickname(void);
+		std::string	get_phone_number(void);
+		std::string	get_darkest_secret(void);
+};
 
 #endif

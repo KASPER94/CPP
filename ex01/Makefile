@@ -6,7 +6,7 @@
 #    By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/29 10:40:49 by skapersk          #+#    #+#              #
-#    Updated: 2024/07/29 12:17:18 by skapersk         ###   ########.fr        #
+#    Updated: 2024/07/29 17:02:48 by skapersk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,9 +24,9 @@ OBJ_DIR = objets/
 
 SRC = phonebook
 
-SRC =	main.cpp /
-		contact.cpp /
-		PhoneBook.cpp /
+SRC =	main.cpp \
+		Contact.cpp \
+		PhoneBook.cpp \
 
 OBJ = $(SRC:.cpp=.o)
 

@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 11:05:57 by skapersk          #+#    #+#             */
-/*   Updated: 2024/07/29 11:17:22 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/07/29 17:04:34 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <cstring>
+#include "../includes/PhoneBook.hpp"
+#include "../includes/Contact.hpp"
 
-int	main(int ac, char **av)
+int	main(void)
 {
-	int j;
+	PhoneBook	phone_book;
+	char		line[512];
 
-	if (ac == 1)
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
-	else
+	std::cout << "> ";
+	while (std::cin.getline(line, 512) && strcmp(line, "EXIT") != 0)
 	{
-		for (int i; i < ac; i++)
-		{
-			j =-1;
-			while (av[i][++j])
-				std::cout << (char)std::toupper(av[i][j]);
-		}
-		std::cout << std::endl;
+		phone_book.Contact = line;
 	}
+	std::cout << phone_book.Contact;
+	std::cout << std::endl;
 	return (0);
 }
