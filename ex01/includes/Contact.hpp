@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 12:16:00 by skapersk          #+#    #+#             */
-/*   Updated: 2024/07/29 18:33:51 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/07/30 12:14:48 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ class Contact {
 		Contact(void);
 		~Contact(void);
 		
+		int			check_printable(std::string str);
 		void		set_first_name(void);
 		void		set_last_name(void);
 		void		set_nickname(void);

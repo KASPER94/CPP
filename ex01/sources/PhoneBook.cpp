@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 12:15:57 by skapersk          #+#    #+#             */
-/*   Updated: 2024/07/30 11:25:33 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/07/30 12:27:39 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,13 @@ void	PhoneBook::add(void)
 	this->_contacts[this->_nb_contacts % 8].set_phone_number();
 	this->_contacts[this->_nb_contacts % 8].set_darkest_secret();
 	this->_nb_contacts++;
+}
+
+void	PhoneBook::search(void)
+{
+	// unsigned long	nb_entries;
+
+	std::cout << "┌─────────┬─────────────┬────────────┬──────────┐" << std::endl;
+	std::cout << "│  index  │ first name  │  last name │ nickname │" << std::endl;
+	std::cout << "├─────────┼─────────────┼────────────┼──────────┤" << std::endl;
 }
