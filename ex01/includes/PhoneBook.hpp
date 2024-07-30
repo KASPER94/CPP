@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 12:16:03 by skapersk          #+#    #+#             */
-/*   Updated: 2024/07/29 16:54:28 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/07/30 11:13:40 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ class	PhoneBook {
 
 		void	add(void);
 		void	search(void);
-}
+};
 
 #endif

@@ -6,7 +6,7 @@
 #    By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/29 10:40:49 by skapersk          #+#    #+#              #
-#    Updated: 2024/07/29 17:02:48 by skapersk         ###   ########.fr        #
+#    Updated: 2024/07/30 11:58:02 by skapersk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,7 @@ $(NAME) : $(OBJ_FILES)
 clean :
 	@$(RM) -rf $(OBJ_DIR)
 
-flcean :
+fclean :
 	@$(RM) -rf $(OBJ_DIR)
 	@$(RM) $(NAME)
 

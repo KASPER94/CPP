@@ -6,13 +6,13 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 12:15:57 by skapersk          #+#    #+#             */
-/*   Updated: 2024/07/29 19:01:42 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/07/30 11:25:33 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include "PhoneBook.hpp"
-#include "Contact.hpp"
+#include "../includes/PhoneBook.hpp"
+#include "../includes/Contact.hpp"
 
 std::string	reduce(std::string str)
 {
@@ -33,6 +33,7 @@ int	is_valid_number(std::string str)
 		if (!isdigit(str[i]))
 			return (0);
 	}
+	return (1);
 }
 
 PhoneBook::PhoneBook(void)
@@ -48,10 +49,10 @@ PhoneBook::~PhoneBook(void)
 
 void	PhoneBook::add(void)
 {
-	this->Contacts[this->_nb_contacts % 8].set_first_name();
-	this->Contacts[this->_nb_contacts % 8].set_last_name();
-	this->Contacts[this->_nb_contacts % 8].set_nickname();
-	this->Contacts[this->_nb_contacts % 8].set_phone_number();
-	this->Contacts[this->_nb_contacts % 8].set_darkest_secret();
+	this->_contacts[this->_nb_contacts % 8].set_first_name();
+	this->_contacts[this->_nb_contacts % 8].set_last_name();
+	this->_contacts[this->_nb_contacts % 8].set_nickname();
+	this->_contacts[this->_nb_contacts % 8].set_phone_number();
+	this->_contacts[this->_nb_contacts % 8].set_darkest_secret();
 	this->_nb_contacts++;
 }
