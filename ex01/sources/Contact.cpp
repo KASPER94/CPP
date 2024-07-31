@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 12:15:52 by skapersk          #+#    #+#             */
-/*   Updated: 2024/07/30 12:16:32 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/07/30 14:05:20 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	Contact::set_first_name(void)
 	std::cout << "First name  > ";
 	while (std::getline(std::cin, this->_first_name))
 	{
-		if (!this->_first_name.empty() && !this->check_printable(this->_first_name))
+		if (!this->_first_name.empty() && this->check_printable(this->_first_name))
 			break ;
 		std::cerr << "This field can't be empty, and must contains only printable char" << std::endl;
 		std::cout << "Fist name > ";
@@ -49,7 +49,7 @@ void	Contact::set_last_name(void)
 	std::cout << "Last name  > ";
 	while (std::getline(std::cin, this->_last_name))
 	{
-		if (!this->_last_name.empty() && !check_printable(this->_last_name))
+		if (!this->_last_name.empty() && check_printable(this->_last_name))
 			break ;
 		std::cerr << "This field can't be empty, and must contains only printable char" << std::endl;
 		std::cout << "Last name > ";
@@ -61,7 +61,7 @@ void	Contact::set_nickname(void)
 	std::cout << "Nickname  > ";
 	while (std::getline(std::cin, this->_nickname))
 	{
-		if (!this->_nickname.empty() && !check_printable(this->_nickname))
+		if (!this->_nickname.empty() && check_printable(this->_nickname))
 			break ;
 		std::cerr << "This field can't be empty, and must contains only printable char" << std::endl;
 		std::cout << "Nickname > ";
@@ -73,7 +73,7 @@ void	Contact::set_phone_number(void)
 	std::cout << "Phone number  > ";
 	while (std::getline(std::cin, this->_phone_number))
 	{
-		if (!this->_phone_number.empty() && !check_printable(this->_phone_number))
+		if (!this->_phone_number.empty() && check_printable(this->_phone_number))
 			break ;
 		std::cerr << "This field can't be empty, and must contains only printable char" << std::endl;
 		std::cout << "Phone number > ";
@@ -85,7 +85,7 @@ void	Contact::set_darkest_secret(void)
 	std::cout << "Darkest secret  > ";
 	while (std::getline(std::cin, this->_darkest_secret))
 	{
-		if (!this->_darkest_secret.empty() && !check_printable(this->_darkest_secret))
+		if (!this->_darkest_secret.empty() && check_printable(this->_darkest_secret))
 			break ;
 		std::cerr << "This field can't be empty, and must contains only printable char" << std::endl;
 		std::cout << "Darkest secret > ";
