@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 12:15:57 by skapersk          #+#    #+#             */
-/*   Updated: 2024/07/31 10:17:54 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/07/31 11:45:29 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,9 @@ void	PhoneBook::print(void)
 {
 	unsigned long	nb_entries;
 
- 	std::cout << "┌──────────┬───────────┬──────────┬──────────┐" << std::endl;
-    std::cout << "│  index   │ firstname │ lastname │ nickname │" << std::endl;
-    std::cout << "├──────────┼───────────┼──────────┼──────────┤" << std::endl;
+ 	std::cout << "┌──────────┬──────────┬──────────┬──────────┐" << std::endl;
+    std::cout << "│  index   │first name│ last name│ nickname │" << std::endl;
+    std::cout << "├──────────┼──────────┼──────────┼──────────┤" << std::endl;
     if (this->_nb_contacts > 7)
         nb_entries = 8;
     else
@@ -99,17 +99,74 @@ void	PhoneBook::print(void)
         std::cout << "│";
 		print_centered(int_to_string(i), 10);
         std::cout << "│";
-		print_centered(limit(this->_contacts[i].get_first_name()), 11);
+		print_centered(limit(this->_contacts[i].get_first_name()), 10);
         std::cout << "│";
 		print_centered(limit(this->_contacts[i].get_last_name()), 10);
         std::cout << "│";
 		print_centered(limit(this->_contacts[i].get_nickname()), 10);
         std::cout << "│" << std::endl;
     }
-    std::cout << "└─────────┴────────────┴────────────┴──────────┘" << std::endl;
+    std::cout << "└──────────┴──────────┴──────────┴──────────┘" << std::endl;
 }
 
 void	PhoneBook::search(void)
 {
+	unsigned long nb_entries;
+	unsigned int nb_try;
+	unsigned long i;
+	std::string		index;
 	
+	if (this->_nb_contacts > 7)
+		nb_entries = 8;
+	else
+		nb_entries = this->_nb_contacts;
+	this->print();
+	if (this->_nb_contacts == 0)
+		return ;
+	std::cout << "index > ";
+	nb_try = 0;
+	i = 8;
+	while (std::getline(std::cin, index))
+	{
+		i = 8;
+		if (index.empty())
+		{
+			std::cout << "index > ";
+			continue ;
+		}
+		if (is_valid_number(index))
+		{
+			nb_try++;
+			std::istringstream(index) >> i;
+			if (i >= nb_entries)
+			{
+				if (nb_try < 5)
+				{
+					std::cerr << "Invalid index: try again !" << std::endl;
+					std::cout << "index > ";
+					continue ;
+				}
+				std::cerr << "Invalid index: SEARCH exited !" << std::endl;
+				return ;
+			}
+			else
+				break ;
+		}
+		else
+		{
+			nb_try++;
+			if (nb_try < 5)
+			{
+				std::cerr << "Invalid index: try again !" << std::endl;
+				std::cout << "index > ";
+				continue ;
+			}
+			std::cerr << "Invalid index: SEARCH exited !" << std::endl;
+			return ;
+		}
+	}
+	if (i < nb_entries)
+		this->_contacts[i].print_contact();
+	else
+		std::cout << std::endl;
 }

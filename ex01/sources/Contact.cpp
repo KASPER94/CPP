@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 12:15:52 by skapersk          #+#    #+#             */
-/*   Updated: 2024/07/30 14:05:20 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/07/31 11:34:09 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,15 @@ Contact::Contact(void)
 Contact::~Contact(void)
 {
 	return ;
+}
+
+void	Contact::print_contact(void)
+{
+	std::cout << "First name : " << this->_first_name << std::endl;
+	std::cout << "Last name : " << this->_last_name << std::endl;
+	std::cout << "Nickname : " << this->_nickname << std::endl;
+	std::cout << "Phone number : " << this->_phone_number << std::endl;
+	std::cout << "Darkest secret : " << this->_darkest_secret << std::endl;
 }
 
 int		Contact::check_printable(std::string str)

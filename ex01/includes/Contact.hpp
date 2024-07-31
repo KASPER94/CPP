@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 12:16:00 by skapersk          #+#    #+#             */
-/*   Updated: 2024/07/30 12:14:48 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/07/31 11:35:16 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ class Contact {
 		std::string	get_nickname(void);
 		std::string	get_phone_number(void);
 		std::string	get_darkest_secret(void);
+		void	print_contact(void);
 };
 
 #endif
