@@ -6,22 +6,30 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 15:21:57 by skapersk          #+#    #+#             */
-/*   Updated: 2024/08/02 16:31:10 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/08/02 18:28:21 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-int	main(void)
+int	main(int ac, char **av)
 {
-	Zombie	*z;
+	Zombie		*horde;
+	int			nbZ;
+	std::string	name = "Zombie";
 
-	std::cout << "============= heapZombies ==============" << std::endl;
-	z = newZombie("Zombie");
-	z->annouce();
-	delete z;
-	std::cout << std::endl;
-	std::cout << "============= stackZombies =============" << std::endl;
-	randomChump("RandomZombie");
+	if (ac == 1 || ac > 2)
+		nbZ = 12;
+	else if (std::atoi(av[1]) <= 0)
+	{
+		std::cerr << "Negative numbers or 0 are prohibited" << std::endl;
+		return (1);
+	}
+	else
+		nbZ = std::atoi(av[1]);
+	horde = zombieHorde(nbZ, name);
+	for (int i = 0; i < nbZ; i++)
+		horde[i].annouce();
+	delete [] horde;
 	return (0);
 }

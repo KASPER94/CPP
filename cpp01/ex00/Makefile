@@ -6,11 +6,11 @@
 #    By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/29 10:40:49 by skapersk          #+#    #+#              #
-#    Updated: 2024/08/02 16:43:13 by skapersk         ###   ########.fr        #
+#    Updated: 2024/08/02 16:46:30 by skapersk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = zombie
+NAME = horde
 
 CC = c++
 
@@ -24,8 +24,7 @@ OBJ_DIR = objets/
 
 SRC = main.cpp \
       Zombie.cpp \
-	  randomChump.cpp \
-	  newZombie.cpp \
+	  zombieHorde.cpp \
 
 OBJ = $(SRC:.cpp=.o)
 
