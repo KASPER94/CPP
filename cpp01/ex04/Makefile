@@ -6,11 +6,11 @@
 #    By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/29 10:40:49 by skapersk          #+#    #+#              #
-#    Updated: 2024/08/02 16:43:13 by skapersk         ###   ########.fr        #
+#    Updated: 2024/08/05 11:00:24 by skapersk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = zombie
+NAME = EditFile
 
 CC = c++
 
@@ -23,9 +23,8 @@ SRC_DIR = sources/
 OBJ_DIR = objets/
 
 SRC = main.cpp \
-      Zombie.cpp \
-	  randomChump.cpp \
-	  newZombie.cpp \
+      EditFile.cpp \
+	  test.cpp \
 
 OBJ = $(SRC:.cpp=.o)
 

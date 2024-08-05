@@ -6,15 +6,15 @@
 #    By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/29 10:40:49 by skapersk          #+#    #+#              #
-#    Updated: 2024/07/29 11:16:13 by skapersk         ###   ########.fr        #
+#    Updated: 2024/08/02 16:46:30 by skapersk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = megaphone
+NAME = horde
 
 CC = c++
 
-INCLUDES = INCLUDES
+INCLUDES = includes/
 
 CFLAGS = -Wall -Werror -Wextra -std=c++98 -I $(INCLUDES)
 
@@ -22,9 +22,9 @@ SRC_DIR = sources/
 
 OBJ_DIR = objets/
 
-SRC = megaphone
-
-SRC = megaphone.cpp
+SRC = main.cpp \
+      Zombie.cpp \
+	  zombieHorde.cpp \
 
 OBJ = $(SRC:.cpp=.o)
 
@@ -32,7 +32,7 @@ SRC_FILES = $(addprefix $(SRC_DIR), $(SRC))
 
 OBJ_FILES = $(addprefix $(OBJ_DIR), $(OBJ))
 
-.PHONY : all clean flcean re
+.PHONY : all clean fclean re
 
 all : $(NAME)
 
@@ -46,10 +46,10 @@ $(NAME) : $(OBJ_FILES)
 clean :
 	@$(RM) -rf $(OBJ_DIR)
 
-flcean :
+fclean :
 	@$(RM) -rf $(OBJ_DIR)
 	@$(RM) $(NAME)
 
 re :
-	@make flcean --no-print-directory
+	@make fclean --no-print-directory
 	@make all --no-printf-directory

@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/02 15:22:03 by skapersk          #+#    #+#             */
-/*   Updated: 2024/08/02 16:33:17 by skapersk         ###   ########.fr       */
+/*   Created: 2024/08/02 15:21:57 by skapersk          #+#    #+#             */
+/*   Updated: 2024/08/05 11:14:14 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-# define ZOMBIE_HPP
+#include "EditFile.hpp"
 
-# include <iostream>
-
-class Zombie {
-	private:
-		std::string	_name;
+int	main(int ac, char **av)
+{
+	EditFile	*file;
 	
-	public:
-		Zombie(std::string name);
-		~Zombie(void);
-		
-		void	annouce(void);	
-};
-
-Zombie*	newZombie(std::string name);
-void	randomChump(std::string name);
-
-#endif
+	if (ac != 4)
+	{
+		std::cerr << "EditFile : wrong number of arguments" << std::endl;
+		std::cerr << "./EditFile <filename> \"string to replace\" \"replacement string" << std::endl;
+		return (FAILURE);
+	}
+	file = new EditFile(av{1}, av[2], av[3]);
+	delete file;
+	return (SUCCESS);
+}
