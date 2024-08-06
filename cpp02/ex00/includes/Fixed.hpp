@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 15:35:48 by skapersk          #+#    #+#             */
-/*   Updated: 2024/08/06 19:09:15 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/08/06 19:18:59 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ class Fixed {
 	private:
 
 	public:
-
+		Fixed();
+		Fixed(const Fixed &cpy);
+		~Fixed();
+		Fixed &operator=(const Fixed &rhs);
 };
 
 #endif
