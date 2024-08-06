@@ -6,28 +6,31 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 15:21:57 by skapersk          #+#    #+#             */
-/*   Updated: 2024/08/06 15:37:33 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/08/06 17:02:45 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "EditFile.hpp"
+#include "Harl.hpp"
 
-int	main(int ac, char **av)
+int	main(void)
 {
-	EditFile	*file;
+	Harl Harl;
 
-	if (ac != 4)
-	{
-		std::cerr << "EditFile : wrong number of arguments" << std::endl;
-		std::cerr << "./EditFile <filename> \"string to replace\" \"replacement string" << std::endl;
-		return (FAILURE);
-	}
-	file = new EditFile(av[1], av[2], av[3]);
-	if (file->readIn() != SUCCESS)
-		return (FAILURE);
-	if (file->writeOut() != SUCCESS)
-		return (FAILURE);
-	delete file;
-	return (SUCCESS);
+	std::cout << "DEBUG : " << std::endl;
+	Harl.complain("DEBUG");
+	std::cout << std::endl;
+	std::cout << "INFO : " << std::endl;
+	Harl.complain("INFO");
+	std::cout << std::endl;
+	std::cout << "WARNING : " << std::endl;
+	Harl.complain("WARNING");
+	std::cout << std::endl;
+	std::cout << "ERROR : " << std::endl;
+	Harl.complain("ERROR");
+	std::cout << std::endl;
+	std::cout << "WRONG ARG : " << std::endl;
+	Harl.complain("WRONGGGGGG ARG");
+	std::cout << std::endl;
+	return (0);
 }
 

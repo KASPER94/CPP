@@ -6,28 +6,39 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 15:21:57 by skapersk          #+#    #+#             */
-/*   Updated: 2024/08/06 15:37:33 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/08/06 18:00:18 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "EditFile.hpp"
+#include "Harl.hpp"
 
 int	main(int ac, char **av)
 {
-	EditFile	*file;
+	Harl		Harl;
+	std::string	str[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+	int			i;
 
-	if (ac != 4)
+	if (ac != 2)
 	{
-		std::cerr << "EditFile : wrong number of arguments" << std::endl;
-		std::cerr << "./EditFile <filename> \"string to replace\" \"replacement string" << std::endl;
-		return (FAILURE);
+		std::cerr << "HarlFilter: wrong number of arguments" << std::endl;
+		std::cerr << "./HarlFilter \"Minimum severity level\"" << std::endl;
+		return (1);
 	}
-	file = new EditFile(av[1], av[2], av[3]);
-	if (file->readIn() != SUCCESS)
-		return (FAILURE);
-	if (file->writeOut() != SUCCESS)
-		return (FAILURE);
-	delete file;
-	return (SUCCESS);
+	i = Harl.set_check_level(av[1]);
+	switch (i)
+	{
+		case 0:
+			Harl.complain(str[0]);
+		case 1:
+			Harl.complain(str[1]);
+		case 2:
+			Harl.complain(str[2]);
+		case 3:
+			Harl.complain(str[3]);
+			break ;
+		default:
+			break ;
+	}
+	return (0);
 }
 

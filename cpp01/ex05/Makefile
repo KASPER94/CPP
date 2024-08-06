@@ -5,12 +5,12 @@
 #                                                     +:+ +:+         +:+      #
 #    By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/08/05 15:32:41 by skapersk          #+#    #+#              #
-#    Updated: 2024/08/06 15:37:01 by skapersk         ###   ########.fr        #
+#    Created: 2024/08/06 15:36:40 by skapersk          #+#    #+#              #
+#    Updated: 2024/08/06 15:36:55 by skapersk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = EditFile
+NAME = Harl
 
 CC = c++
 
@@ -23,7 +23,7 @@ SRC_DIR = sources/
 OBJ_DIR = objets/
 
 SRC = main.cpp \
-      EditFile.cpp \
+      Harl.cpp \
 
 OBJ = $(SRC:.cpp=.o)
 
