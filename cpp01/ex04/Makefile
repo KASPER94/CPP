@@ -6,7 +6,7 @@
 #    By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/05 15:32:41 by skapersk          #+#    #+#              #
-#    Updated: 2024/08/05 15:43:18 by skapersk         ###   ########.fr        #
+#    Updated: 2024/08/06 12:24:30 by skapersk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ OBJ_DIR = objets/
 
 SRC = main.cpp \
       EditFile.cpp \
-	  test.cpp \
+	#   test.cpp \
 
 OBJ = $(SRC:.cpp=.o)
 
