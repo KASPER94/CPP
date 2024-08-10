@@ -6,11 +6,11 @@
 #    By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/09 12:57:21 by skapersk          #+#    #+#              #
-#    Updated: 2024/08/10 13:07:09 by skapersk         ###   ########.fr        #
+#    Updated: 2024/08/10 13:28:41 by skapersk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ClapTrap
+NAME = ScavTrap
 
 CC = c++
 
@@ -24,6 +24,7 @@ OBJ_DIR = object/
 
 SRC = main.cpp \
 	  ClapTrap.cpp \
+	  ScavTrap.cpp \
 
 OBJ = $(SRC:.cpp=.o)
 
