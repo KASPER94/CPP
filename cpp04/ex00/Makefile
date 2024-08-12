@@ -6,7 +6,7 @@
 #    By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/11 15:03:40 by skapersk          #+#    #+#              #
-#    Updated: 2024/08/11 15:21:04 by skapersk         ###   ########.fr        #
+#    Updated: 2024/08/12 20:14:52 by skapersk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,11 @@ SRC_DIR = sources/
 OBJ_DIR = objects/
 
 SRC = main.cpp \
+	  Dog.cpp \
+	  Cat.cpp \
+	  Animal.cpp \
+	  WrongCat.cpp \
+	  WrongAnimal.cpp \
 
 OBJ = $(SRC:.cpp=.o)
 
