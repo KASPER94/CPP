@@ -6,11 +6,11 @@
 #    By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/11 15:03:40 by skapersk          #+#    #+#              #
-#    Updated: 2024/08/17 19:35:19 by skapersk         ###   ########.fr        #
+#    Updated: 2024/08/17 22:54:16 by skapersk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ex01
+NAME = ex02
 
 CC = c++
 
@@ -55,5 +55,5 @@ fclean :
 	@$(RM) $(NAME)
 
 re :
-	@make fclean
-	@make all
+	@make fclean --no-print-directory
+	@make all --no-print-directory
