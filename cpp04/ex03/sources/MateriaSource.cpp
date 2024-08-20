@@ -6,9 +6,11 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 23:54:57 by skapersk          #+#    #+#             */
-/*   Updated: 2024/08/19 23:34:09 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/08/20 20:55:05 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "MateriaSource.hpp"
 
 MateriaSource::MateriaSource() {
 	std::cout << "MateriaSource: Default Constructor called" << std::endl;

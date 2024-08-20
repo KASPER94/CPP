@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 22:52:12 by skapersk          #+#    #+#             */
-/*   Updated: 2024/08/20 18:25:06 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/08/20 20:48:22 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,6 @@
 # include "AMateria.hpp"
 
 class Cure : public AMateria {
-	protected:
-		std::string type;
-
 	public:
 		Cure();
 		Cure(std::string const &type);
@@ -28,7 +25,7 @@ class Cure : public AMateria {
 
 		Cure &operator=(const Cure &rhs);
 
-		Cure			*clone() const;
+		AMateria			*clone() const;
 		void		use(ICharacter &target);
 };
 

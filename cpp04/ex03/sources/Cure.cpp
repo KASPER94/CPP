@@ -6,11 +6,12 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 22:52:12 by skapersk          #+#    #+#             */
-/*   Updated: 2024/08/20 18:45:02 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/08/20 20:51:55 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cure.hpp"
+#include "ICharacter.hpp"
 
 Cure::Cure() {
 	std::cout << "Cure: Default Constructor called" << std::endl;
@@ -21,7 +22,7 @@ Cure::Cure(const std::string &type) {
 	this->type = type;
 }
 
-Cure::Cure(const Ice &cpy) {
+Cure::Cure(const Cure &cpy) : AMateria(cpy) {
 	*this = cpy;
 }
 
@@ -35,11 +36,11 @@ Cure &Cure::operator=(const Cure &rhs) {
 	return (*this);
 }
 
-Cure			*Cure::clone() const {
+AMateria	*Cure::clone() const {
 	AMateria	*clone = new Cure(*this);
 	return (clone);
 }
 
-void		Cure::Cure(ICharacter &target) {
+void		Cure::use(ICharacter &target) {
 	std::cout << "* heals " << target.getName() << " 's wounds *" << std::endl;
 }
