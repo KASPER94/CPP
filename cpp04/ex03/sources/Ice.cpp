@@ -1,34 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Ice.hpp                                            :+:      :+:    :+:   */
+/*   Ice.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 22:52:12 by skapersk          #+#    #+#             */
-/*   Updated: 2024/08/19 00:00:37 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/08/20 16:05:45 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	ICE_HPP
-# define	ICE_HPP
+#include "Ice.hpp"
 
-#include "AMateria.hpp"
+Ice::Ice() {
+	std::cout << "Ice: Default Constructor called" << std::endl;
+	this->type = "ice";
+}
 
-class Ice : public AMateria {
-	protected:
-		std::string type;
+Ice::Ice(const std::string &type) {
+	this->type = type
+}
 
-	public:
-		Ice();
-		Ice(std::string const &type);
-		Ice(const Ice &cpy);
-		~Ice();
+Ice::Ice(const Ice &cpy) {
+	*this = cpy;
+}
 
-		Ice &operator=(const Ice &rhs);
+Ice::~Ice() {
 
-		Ice			*clone() const;
-		void		use(ICharacter &target);
-};
+}
 
-#endif
+Ice &Ice::operator=(const Ice &rhs) {
+	if (*this != rhs)
+		this->type = rhs.type;
+	return (*this);
+}
+
+Ice			*Ice::clone() const {
+	AMateria	*clone = new Ice(*this);
+	return (clone);
+}
+
+void		Ice::use(ICharacter &target) {
+	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
+}

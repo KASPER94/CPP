@@ -1,35 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.hpp                                       :+:      :+:    :+:   */
+/*   AMateria.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 22:52:12 by skapersk          #+#    #+#             */
-/*   Updated: 2024/08/18 23:47:29 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/08/20 16:41:35 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	AMATERIA_HPP
-# define	AMATERIA_HPP
+#include "AMateria.hpp"
+std::string type;
 
-class ICharacter;
+AMateria::AMateria() {
 
-class AMateria {
-	protected:
-		std::string type;
+}
 
-	public:
-		AMateria();
-		AMateria(std::string const &type);
-		AMateria(const AMateria &cpy);
-		~AMateria();
+AMateria::AMateria(std::string const &type) {
 
-		AMateria &operator=(const AMateria &rhs);
+}
 
-		std::string const 	&getType() const;
-		virtual AMateria	*clone() const = 0;
-		virtual void		use(ICharacter &target);
-};
+AMateria::AMateria(const AMateria &cpy) {
 
-#endif
+}
+
+AMateria::~AMateria() {
+
+}
+
+AMateria &AMateria::operator=(const AMateria &rhs) {
+
+}
+
+std::string const 	&AMateria::getType() const {
+
+}
+
+virtual AMateria	*AMateria::clone() const {
+
+}
+
+virtual void		AMateria::use(ICharacter &target) {
+	
+}
