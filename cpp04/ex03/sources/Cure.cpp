@@ -1,34 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cure.hpp                                           :+:      :+:    :+:   */
+/*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 22:52:12 by skapersk          #+#    #+#             */
-/*   Updated: 2024/08/19 00:00:46 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/08/20 18:45:02 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	CURE_HPP
-# define	CURE_HPP
+#include "Cure.hpp"
 
-#include "AMateria.hpp"
+Cure::Cure() {
+	std::cout << "Cure: Default Constructor called" << std::endl;
+	this->type = "cure";
+}
 
-class Cure : public AMateria {
-	protected:
-		std::string type;
+Cure::Cure(const std::string &type) {
+	this->type = type;
+}
 
-	public:
-		Cure();
-		Cure(std::string const &type);
-		Cure(const Cure &cpy);
-		~Cure();
+Cure::Cure(const Ice &cpy) {
+	*this = cpy;
+}
 
-		Cure &operator=(const Cure &rhs);
+Cure::~Cure() {
 
-		Cure			*clone() const;
-		void		use(ICharacter &target);
-};
+}
 
-#endif
+Cure &Cure::operator=(const Cure &rhs) {
+	if (this != &rhs)
+		this->type = rhs.type;
+	return (*this);
+}
+
+Cure			*Cure::clone() const {
+	AMateria	*clone = new Cure(*this);
+	return (clone);
+}
+
+void		Cure::Cure(ICharacter &target) {
+	std::cout << "* heals " << target.getName() << " 's wounds *" << std::endl;
+}

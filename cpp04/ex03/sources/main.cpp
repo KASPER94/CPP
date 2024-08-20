@@ -6,14 +6,15 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 15:18:38 by skapersk          #+#    #+#             */
-/*   Updated: 2024/08/20 15:57:14 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/08/20 18:19:32 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
-#include "Cat.hpp"
-#include "WrongCat.hpp"
-
+#include "AMateria.hpp"
+#include "Ice.hpp"
+#include "Cure.hpp"
+#include "Character.hpp"
+#include "MateriaSource.hpp"
 
 int	main(void) 
 {

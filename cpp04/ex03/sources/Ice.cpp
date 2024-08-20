@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 22:52:12 by skapersk          #+#    #+#             */
-/*   Updated: 2024/08/20 16:05:45 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/08/20 18:37:53 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ Ice::~Ice() {
 }
 
 Ice &Ice::operator=(const Ice &rhs) {
-	if (*this != rhs)
+	if (this != &rhs)
 		this->type = rhs.type;
 	return (*this);
 }

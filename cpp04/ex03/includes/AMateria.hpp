@@ -6,12 +6,15 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 22:52:12 by skapersk          #+#    #+#             */
-/*   Updated: 2024/08/18 23:47:29 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/08/20 18:44:20 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef	AMATERIA_HPP
 # define	AMATERIA_HPP
+
+# include <string>
+# include <iostream>
 
 class ICharacter;
 
@@ -23,7 +26,7 @@ class AMateria {
 		AMateria();
 		AMateria(std::string const &type);
 		AMateria(const AMateria &cpy);
-		~AMateria();
+		virtual ~AMateria();
 
 		AMateria &operator=(const AMateria &rhs);
 

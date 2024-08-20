@@ -6,14 +6,11 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 23:49:37 by skapersk          #+#    #+#             */
-/*   Updated: 2024/08/20 16:39:35 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/08/20 18:40:18 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "Character.hpp"
-
-std::string name;
-AMateria	*inventory[4];
+#include "Character.hpp"
 
 Character::Character() {
 	this->name = "Default name";
@@ -33,11 +30,12 @@ Character::Character(const Character &cpy) {
 
 Character::~Character() {
 	for (int i = 0; i < 4; i++)
-		delete this->inventory[i];
+		if (this->inventory[i])
+			delete this->inventory[i];
 }
 
 Character &Character::operator=(const Character &rhs) {
-	if (*this != rhs) {
+	if (this != &rhs) {
 		this->name = rhs.name;
 		for (int i = 0; i < 4; i++) {
 			if (this->inventory)

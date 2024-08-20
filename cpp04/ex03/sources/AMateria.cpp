@@ -6,23 +6,23 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 22:52:12 by skapersk          #+#    #+#             */
-/*   Updated: 2024/08/20 16:41:35 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/08/20 18:37:10 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AMateria.hpp"
-std::string type;
+#include "ICharacter.hpp"
 
 AMateria::AMateria() {
-
+	this->type = "Default Materia";
 }
 
-AMateria::AMateria(std::string const &type) {
-
+AMateria::AMateria(const std::string &type) : type(type) {
+	
 }
 
 AMateria::AMateria(const AMateria &cpy) {
-
+	*this = cpy;
 }
 
 AMateria::~AMateria() {
@@ -30,17 +30,16 @@ AMateria::~AMateria() {
 }
 
 AMateria &AMateria::operator=(const AMateria &rhs) {
-
+	if (this != &rhs) {
+		this->type = rhs.type;
+	}
+	return (*this);
 }
 
 std::string const 	&AMateria::getType() const {
-
+	return (this->type);
 }
 
-virtual AMateria	*AMateria::clone() const {
-
-}
-
-virtual void		AMateria::use(ICharacter &target) {
-	
+void		AMateria::use(ICharacter &target) {
+	std::cout << "* "  "use " << this->type << " on " << target.getName() << std::endl;
 }

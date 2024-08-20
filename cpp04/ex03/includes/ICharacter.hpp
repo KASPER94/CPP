@@ -6,13 +6,14 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 23:38:54 by skapersk          #+#    #+#             */
-/*   Updated: 2024/08/18 23:46:53 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/08/20 18:25:21 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ICHARACTER_HPP
 # define ICHARACTER_HPP
 
+# include <iostream>
 # include "AMateria.hpp"
 
 class AMateria;

@@ -6,14 +6,15 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 23:38:54 by skapersk          #+#    #+#             */
-/*   Updated: 2024/08/19 00:00:07 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/08/20 18:25:25 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef IMATERIASOURCE_HPP
 # define IMATERIASOURCE_HPP
 
-#include "AMateria.hpp"
+# include <iostream>
+# include "AMateria.hpp"
 
 class IMateriaSource
 {

@@ -6,14 +6,15 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 22:52:12 by skapersk          #+#    #+#             */
-/*   Updated: 2024/08/19 00:00:37 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/08/20 18:25:17 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef	ICE_HPP
 # define	ICE_HPP
 
-#include "AMateria.hpp"
+# include <iostream>
+# include "AMateria.hpp"
 
 class Ice : public AMateria {
 	protected:

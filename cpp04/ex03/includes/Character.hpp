@@ -6,13 +6,15 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 23:49:37 by skapersk          #+#    #+#             */
-/*   Updated: 2024/08/19 00:01:04 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/08/20 18:24:56 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHARACTER_HPP
 # define CHARACTER_HPP
 
+# include <string>
+# include <iostream>
 # include "ICharacter.hpp"
 # include "AMateria.hpp"
 
