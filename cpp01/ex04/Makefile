@@ -6,7 +6,7 @@
 #    By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/05 15:32:41 by skapersk          #+#    #+#              #
-#    Updated: 2024/08/06 15:37:01 by skapersk         ###   ########.fr        #
+#    Updated: 2024/08/21 17:09:01 by skapersk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,5 +50,5 @@ fclean :
 	@$(RM) $(NAME)
 
 re :
-	@make fclean
-	@make all
+	@make fclean --no-print-directory
+	@make all --no-print-directory

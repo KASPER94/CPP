@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 15:21:57 by skapersk          #+#    #+#             */
-/*   Updated: 2024/08/06 15:37:33 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/08/21 17:08:37 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	main(int ac, char **av)
 {
 	EditFile	*file;
+	bool		status;
 
 	if (ac != 4)
 	{
@@ -23,11 +24,11 @@ int	main(int ac, char **av)
 		return (FAILURE);
 	}
 	file = new EditFile(av[1], av[2], av[3]);
-	if (file->readIn() != SUCCESS)
-		return (FAILURE);
-	if (file->writeOut() != SUCCESS)
-		return (FAILURE);
+	if (file->readIn() == FAILURE)
+		status = FAILURE;
+	if (file->writeOut() == FAILURE)
+		status = FAILURE;
 	delete file;
-	return (SUCCESS);
+	return (status);
 }
 

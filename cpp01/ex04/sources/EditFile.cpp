@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 10:59:32 by skapersk          #+#    #+#             */
-/*   Updated: 2024/08/05 15:43:53 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/08/21 17:06:05 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ int	EditFile::readIn(void)
 	{
 		std::cerr << this->_file_name << ": unable to open file" << std::endl;
 		this->_file_in.close();
-		delete this;
 		return (FAILURE);
 	}
 	else if (this->_file_in.is_open())
@@ -73,7 +72,6 @@ int	EditFile::writeOut(void)
 	{
 		std::cerr << this->_new_file_name << ": unable to open file" << std::endl;
 		this->_file_out.close();
-		delete this;
 		return (FAILURE);
 	}
 	else if (this->_file_out.is_open())
