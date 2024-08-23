@@ -6,16 +6,13 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 17:20:57 by skapersk          #+#    #+#             */
-/*   Updated: 2024/08/23 11:13:49 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/08/23 16:53:14 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-const std::string _name;
-int	_grade;
-
-Bureaucrat::Bureaucrat() : _mane(NULL), _grade(150) {
+Bureaucrat::Bureaucrat() : _name("Default name"), _grade(150) {
 
 }
 
@@ -32,29 +29,46 @@ Bureaucrat::~Bureaucrat() {
 }
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &rhs) {
-	if ()
+	this->_grade = rhs._grade;
+	return (*this);
 }
 
 std::string Bureaucrat::getName() const {
-
+	return (this->_name);
 }
 
 int Bureaucrat::getGrade() const {
-
+	return (this->_grade);
 }
 
-void	Bureaucrat::GradeTooHighException() const {
-
+const char	*Bureaucrat::GradeTooHighException::what() const throw()  {
+	return((char*)"grade too high !");
 }
 
-void	Bureaucrat::GradeTooLowException() const {
-
+const char	*Bureaucrat::GradeTooLowException::what() const throw()  {
+	return((char*)"grade too low !");
 }
 
 void	Bureaucrat::incrementGrade() {
-
+	if (this->_grade == 1) {
+		throw Bureaucrat::GradeTooHighException();
+	}
+	else {
+		std::cout << "congrats you've been graded !" << std::endl;
+		this->_grade--;
+	}
 }
 
 void	Bureaucrat::decrementGrade() {
+	if (this->_grade == 150) {
+		throw Bureaucrat::GradeTooLowException();
+	}
+	else {
+		this->_grade++;
+	}
+}
 
+std::ostream	&operator<<(std::ostream &o, const Bureaucrat &Bureaucrat) {
+	o << Bureaucrat.getName() << ", bureaucrat grade " << Bureaucrat.getGrade() << std::endl;;
+	return (o);
 }
