@@ -6,11 +6,12 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 17:20:57 by skapersk          #+#    #+#             */
-/*   Updated: 2024/08/23 16:53:14 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/08/26 17:02:24 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 Bureaucrat::Bureaucrat() : _name("Default name"), _grade(150) {
 
@@ -65,6 +66,15 @@ void	Bureaucrat::decrementGrade() {
 	}
 	else {
 		this->_grade++;
+	}
+}
+
+void	Bureaucrat::signForm(Form &Form) {
+	try {
+		Form.beSigned(*this);
+	}
+	catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
 	}
 }
 

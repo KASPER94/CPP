@@ -6,7 +6,7 @@
 #    By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/11 15:03:40 by skapersk          #+#    #+#              #
-#    Updated: 2024/08/23 16:54:38 by skapersk         ###   ########.fr        #
+#    Updated: 2024/08/26 16:58:29 by skapersk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ OBJ_DIR = objects/
 
 SRC = main.cpp \
 	  Bureaucrat.cpp \
+	  Form.cpp \
 
 OBJ = $(SRC:.cpp=.o)
 
