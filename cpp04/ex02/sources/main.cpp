@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 15:18:38 by skapersk          #+#    #+#             */
-/*   Updated: 2024/08/17 23:18:31 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/09/02 13:52:26 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "WrongCat.hpp"
 
 
-int	main(void) 
+int	main(void)
 {
 	std::cout << "-------------------1st test : Default-------------------" << std::endl;
 	Dog	*doggy = new Dog;
@@ -37,14 +37,13 @@ int	main(void)
 		else
 			animals[i] = new Cat;
 	}
-
 	for (int i = 0; i < 10; i++) {
 		std::cout << std::endl;
 		std::cout << "Animal type: " << animals[i]->getType() << " makes : ";
 		animals[i]->makeSound();
 	}
 	std::cout << std::endl;
-	for (int i = 0; i < 10; i++) 
+	for (int i = 0; i < 10; i++)
 		delete animals[i];
 	std::cout << std::endl;
 
@@ -85,43 +84,41 @@ int	main(void)
 	pup.getIdea();
 	delete doug;
 
-
 	Cat	*kitten = new Cat;
-	std::cout << "\e[0;32mkitten : (type: " << kitten->getType() << ")" << std::endl;
+	std::cout << "\e[0;34mkitten : (type: " << kitten->getType() << ")" << std::endl;
 	std::cout << "Setting ideas...\e[0m" << std::endl;
 	kitten->setIdea(25, "I'm tired...");
 	kitten->setIdea(13, "What the f*ck am I eating ? Is it my tail ?");
-	std::cout << "\e[0;32mkitten : (type: " << kitten->getType() << ")\e[0m" << std::endl;
+	std::cout << "\e[0;34mkitten : (type: " << kitten->getType() << ")\e[0m" << std::endl;
 	kitten->getIdea();
 	Cat garfield = *kitten;
-	std::cout << "\e[0;32mgarfield : (type: " << garfield.getType() << ")\e[0m" << std::endl;
+	std::cout << "\e[0;34mgarfield : (type: " << garfield.getType() << ")\e[0m" << std::endl;
 	garfield.getIdea();
 	Cat kits(garfield);
-	std::cout << "\e[0;32mkits : (type: " << kits.getType() << ")\e[0m" << std::endl;
+	std::cout << "\e[0;34mkits : (type: " << kits.getType() << ")\e[0m" << std::endl;
 	kits.getIdea();
-	std::cout << "\e[0;32mgarfield : (type: " << kitten->getType() << ")" << std::endl;
+	std::cout << "\e[0;34mgarfield : (type: " << kitten->getType() << ")" << std::endl;
 	std::cout << "Setting ideas...\e[0m" << std::endl;
 	kitten->setIdea(25, "I'm tiiiiirrreeeeeeeeed...");
 	kitten->setIdea(13, "I'm so stupid, this is my tail... I'm tired tho.");
-	std::cout << "\e[0;32mkitten : (type: " << kitten->getType() << ")\e[0m" << std::endl;
+	std::cout << "\e[0;34mkitten : (type: " << kitten->getType() << ")\e[0m" << std::endl;
 	kitten->getIdea();
-	std::cout << "\e[0;32mgarfield : (type: " << garfield.getType() << ")\e[0m" << std::endl;
+	std::cout << "\e[0;34mgarfield : (type: " << garfield.getType() << ")\e[0m" << std::endl;
 	garfield.getIdea();
-	std::cout << "\e[0;32mkits : (type: " << kits.getType() << ")\e[0m" << std::endl;
+	std::cout << "\e[0;34mkits : (type: " << kits.getType() << ")\e[0m" << std::endl;
 	kits.getIdea();
-	std::cout << "\e[0;32mgarfield : (type: " << garfield.getType() << ")" << std::endl;
+	std::cout << "\e[0;34mgarfield : (type: " << garfield.getType() << ")" << std::endl;
 	std::cout << "Setting ideas...\e[0m" << std::endl;
 	garfield.setIdea(25, "I'm tir.. zzzZZZzzz");
 	garfield.setIdea(13, "zzZZzzZZzzZZ");
-	std::cout << "\e[0;32mkitten : (type: " << kitten->getType() << ")\e[0m" << std::endl;
+	std::cout << "\e[0;34mkitten : (type: " << kitten->getType() << ")\e[0m" << std::endl;
 	kitten->getIdea();
-	std::cout << "\e[0;32mpuppy : (type: " << garfield.getType() << ")\e[0m" << std::endl;
+	std::cout << "\e[0;34mpuppy : (type: " << garfield.getType() << ")\e[0m" << std::endl;
 	garfield.getIdea();
-	std::cout << "\e[0;32mkits : (type: " << kits.getType() << ")\e[0m" << std::endl;
+	std::cout << "\e[0;34mkits : (type: " << kits.getType() << ")\e[0m" << std::endl;
 	kits.getIdea();
 	kits = garfield;
 	delete kitten;
-
 
 	return (0);
 

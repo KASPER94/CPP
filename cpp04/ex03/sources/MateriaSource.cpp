@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MateriaSource.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: peanut <peanut@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 23:54:57 by skapersk          #+#    #+#             */
-/*   Updated: 2024/08/20 20:55:05 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/09/02 15:27:59 by peanut           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,18 @@ MateriaSource::MateriaSource(const MateriaSource &cpy) {
 MateriaSource::~MateriaSource() {
 	std::cout << "MateriaSource: Destructor called" << std::endl;
 	for (int i = 0; i < 4; i++)
-		delete this->saved_materias[i];
+		if (this->saved_materias[i])
+			delete this->saved_materias[i];
 }
 
 MateriaSource &MateriaSource::operator=(const MateriaSource &rhs) {
 	std::cout << "MateriaSource: Copy assignment operator called" << std::endl;
 	for (int i = 0; i < 4; i++) {
-		if (this->saved_materias[i] != rhs.saved_materias[i])
+		if (this->saved_materias[i])
 			delete this->saved_materias[i];
 		this->saved_materias[i] = NULL;
 		if (rhs.saved_materias[i]) {
-			this->saved_materias[i] =  rhs.saved_materias[i];
+			this->saved_materias[i] =  rhs.saved_materias[i]->clone();
 		}
 	}
 	return (*this);

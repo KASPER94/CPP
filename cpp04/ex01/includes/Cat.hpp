@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 19:21:33 by skapersk          #+#    #+#             */
-/*   Updated: 2024/08/13 18:41:05 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/09/02 11:33:40 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ class Cat : public Animal {
 
 		Cat &operator=(const Cat &rhs);
 		void	makeSound(void);
-		void	setIdea(unsigned int i, std::string idea);
-		void	getIdea(void);
+		virtual void	setIdea(unsigned int i, std::string idea);
+		virtual void	getIdea(void);
 };
 
 #endif

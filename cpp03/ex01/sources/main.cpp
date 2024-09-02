@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 13:11:08 by skapersk          #+#    #+#             */
-/*   Updated: 2024/08/10 17:07:38 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/08/11 11:10:58 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,16 @@ int	main() {
 	a.beRepaired(4);
 	std::cout << "a: ";
 	a.beRepaired(4);
+
 	std::cout << "a: ";
-	a.attack("some random guy");
-	std::cout << "a: ";
-	a.takeDamage(5);
-	std::cout << "a: ";
-	a.attack("some random guy");
+	a.guardGate();
+	std::cout << "b: ";
+	b.guardGate();
+	std::cout << "b: ";
+	b.guardGate();
+	std::cout << "b: ";
+	b.guardGate();
+
 
 	return (0);
 }

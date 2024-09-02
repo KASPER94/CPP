@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 13:11:43 by skapersk          #+#    #+#             */
-/*   Updated: 2024/08/10 17:06:49 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/08/11 11:13:46 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,7 @@ void	ScavTrap::guardGate(void) {
 	}
 	else if (this->_energy_pts > 0 && this->_hit_pts >0 && this->_gateKeeperMode) {
 		std::cout << "ScavTrap : " << this->_name << " is already in gate keeper mode"
-			<< ", its health and energy are too low (" << this->_hit_pts
-			<< " hit point; " << this->_energy_pts << " energy point)" << std::endl;
+			<< ", its health and energy are too low " << std::endl;
 
 	}
 	else if (this->_energy_pts == 0 && this->_hit_pts == 0) {

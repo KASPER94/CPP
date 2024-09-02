@@ -6,11 +6,11 @@
 #    By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/09 12:57:21 by skapersk          #+#    #+#              #
-#    Updated: 2024/08/10 13:28:41 by skapersk         ###   ########.fr        #
+#    Updated: 2024/08/11 11:34:36 by skapersk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ScavTrap
+NAME = FragTrap
 
 CC = c++
 
@@ -25,6 +25,7 @@ OBJ_DIR = object/
 SRC = main.cpp \
 	  ClapTrap.cpp \
 	  ScavTrap.cpp \
+	  FragTrap.cpp \
 
 OBJ = $(SRC:.cpp=.o)
 
