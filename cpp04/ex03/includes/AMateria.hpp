@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 22:52:12 by skapersk          #+#    #+#             */
-/*   Updated: 2024/08/20 18:44:20 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/09/04 00:18:52 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ class AMateria {
 
 		std::string const 	&getType() const;
 		virtual AMateria	*clone() const = 0;
-		virtual void		use(ICharacter &target);
+		void		use(ICharacter &target);
 };
+
 
 #endif

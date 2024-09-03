@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 23:54:57 by skapersk          #+#    #+#             */
-/*   Updated: 2024/08/20 18:25:28 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/09/03 01:49:52 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ class MateriaSource : public IMateriaSource {
 	public:
 		MateriaSource();
 		MateriaSource(const MateriaSource &cpy);
-		~MateriaSource();
+		virtual ~MateriaSource();
 
 		MateriaSource &operator=(const MateriaSource &rhs);
 
-		void		learnMateria(AMateria*);
-		AMateria	*createMateria(const std::string &type);
+		virtual void		learnMateria(AMateria*);
+		virtual AMateria	*createMateria(const std::string &type);
 };
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MateriaSource.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: peanut <peanut@student.42.fr>              +#+  +:+       +#+        */
+/*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 23:54:57 by skapersk          #+#    #+#             */
-/*   Updated: 2024/09/02 15:27:59 by peanut           ###   ########.fr       */
+/*   Updated: 2024/09/04 00:01:03 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,13 @@ MateriaSource::MateriaSource(const MateriaSource &cpy) {
 MateriaSource::~MateriaSource() {
 	std::cout << "MateriaSource: Destructor called" << std::endl;
 	for (int i = 0; i < 4; i++)
-		if (this->saved_materias[i])
-			delete this->saved_materias[i];
+	{
+		if (saved_materias[i] != NULL)
+		{
+			delete saved_materias[i];
+			saved_materias[i] = NULL;
+		}
+	}
 }
 
 MateriaSource &MateriaSource::operator=(const MateriaSource &rhs) {
@@ -48,19 +53,21 @@ void		MateriaSource::learnMateria(AMateria *MateriaSource) {
 	for (int i = 0; i < 4; i++) {
 		if (!this->saved_materias[i]) {
 			this->saved_materias[i] = MateriaSource;
-			return ;
+			break ;
 		}
 	}
 }
 
 AMateria	*MateriaSource::createMateria(const std::string &type) {
-	AMateria	*new_materia;
+	AMateria*	ret = NULL;
 
-	for (int i = 0; i < 4; i++) {
-		if (this->saved_materias[i] && this->saved_materias[i]->getType() == type) {
-			new_materia = this->saved_materias[i]->clone();
-			return (new_materia);
+	for (int i = 0; i < 4; i++)
+	{
+		if (saved_materias[i] != NULL && saved_materias[i]->getType() == type)
+		{
+			ret = saved_materias[i]->clone();
+			break;
 		}
 	}
-	return (NULL);
+	return ret;
 }
