@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 17:20:57 by skapersk          #+#    #+#             */
-/*   Updated: 2024/08/26 17:02:24 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/09/16 22:55:46 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,11 @@ int Bureaucrat::getGrade() const {
 }
 
 const char	*Bureaucrat::GradeTooHighException::what() const throw()  {
-	return((char*)"grade too high !");
+	return((char*)"Bureaucrat's grade too high !");
 }
 
 const char	*Bureaucrat::GradeTooLowException::what() const throw()  {
-	return((char*)"grade too low !");
+	return((char*)"Bureaucrat's grade too low !");
 }
 
 void	Bureaucrat::incrementGrade() {

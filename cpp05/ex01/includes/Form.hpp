@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 16:55:22 by skapersk          #+#    #+#             */
-/*   Updated: 2024/08/26 17:00:41 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/09/16 22:59:06 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,26 +22,36 @@ class Bureaucrat;
 class Form {
 	private:
 		const std::string _name;
-		bool	_signature;
-		const int	_grade;
-		const int	_requiredGrade;
+		bool		_signature;
+		const int	_gradeToSign;
+		const int	_gradeToExe;
 
 	public:
-		Form(std::string name, bool sign, const int grade, const int reqGrade);
+		Form();
+		Form(std::string name, bool sign, const int gradeToSign, const int gradeToExe);
 		~Form();
 		Form(const Form &cpy);
 		Form &operator=(const Form &rhs);
 
-		class GradeTooHighException : public std::exception {
+		class FormGradeTooHighException : public std::exception {
 			public:
-				virtual const char *what() const throw();
+				virtual const char* what() const throw();
 		};
-		class GradeTooLowException : public std::exception {
+		class FormGradeTooLowException : public std::exception {
 			public:
-				virtual const char *what() const throw();
+				virtual const char* what() const throw();
 		};
-		int getGrade() const;
-		bool	beSigned(Bureaucrat &Bureaucrat);
+		class FormAlreadySigned : public std::exception {
+			public:
+				virtual const char* what() const throw();
+		};
+		std::string	getName(void) const;
+		bool		getSignature(void) const;
+		int			getGradeToExe(void) const;
+		int 		getGradeToSign(void) const;
+		void		beSigned(Bureaucrat &Bureaucrat);
 };
+
+std::ostream	&operator<<(std::ostream &o, const Form &Form);
 
 #endif

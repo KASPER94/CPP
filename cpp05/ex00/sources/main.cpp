@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 12:18:29 by skapersk          #+#    #+#             */
-/*   Updated: 2024/08/23 16:52:58 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/09/16 17:50:02 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,14 @@ int main() {
 	Bureaucrat *Lou;
 	Bureaucrat Cam;
 
-	Lou = new Bureaucrat("Lou", 150);
 	try {
-		Jimmy.incrementGrade();
+		Lou = new Bureaucrat("Lou", 158);
+	}
+	catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
+	try {
+		Lou = new Bureaucrat("Lou", 150);
 	}
 	catch (std::exception &e) {
 		std::cerr << e.what() << std::endl;
@@ -31,7 +36,7 @@ int main() {
 		std::cerr << e.what() << std::endl;
 	}
 	try {
-		Lou->decrementGrade();
+		Jimmy.incrementGrade();
 	}
 	catch (std::exception &e) {
 		std::cerr << e.what() << std::endl;
@@ -43,6 +48,7 @@ int main() {
 		std::cerr << e.what() << std::endl;
 	}
 	std::cout << Cam;
+	std::cout << Jimmy;
 	delete Lou;
 	return (0);
 }
