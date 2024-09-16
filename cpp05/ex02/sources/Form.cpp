@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 16:55:04 by skapersk          #+#    #+#             */
-/*   Updated: 2024/09/16 23:10:14 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/09/16 23:00:25 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,8 @@ void	Form::beSigned(Bureaucrat &Bureaucrat) {
 		this->_signature = true;
 	}
 	else {
-		std::cout << Bureaucrat.getName() << " couldn't sign " << this->getName() << " because ";
 		throw Bureaucrat::GradeTooLowException();
-		std::cout << std::endl;
+		std::cout << "you must find a Bureaucrat with the required grade to sign the form !" << std::endl;
 	}
 	if (this->getSignature())
 		throw Form::FormAlreadySigned();
