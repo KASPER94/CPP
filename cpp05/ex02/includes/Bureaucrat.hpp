@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 17:21:04 by skapersk          #+#    #+#             */
-/*   Updated: 2024/09/16 17:59:10 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/09/17 14:50:45 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 # define BUREAUCRAT_HPP
 
 # include <iostream>
-# include "Form.hpp"
+# include "AForm.hpp"
 # include <cstring>
 # include <exception>
 
-class Form;
+class AForm;
 
 class Bureaucrat {
 	private:
@@ -44,7 +44,7 @@ class Bureaucrat {
 		};
 		void	incrementGrade();
 		void	decrementGrade();
-		void	signForm(Form &Form);
+		void	signForm(AForm &AForm);
 };
 
 std::ostream	&operator<<(std::ostream &o, const Bureaucrat &Bureaucrat);
