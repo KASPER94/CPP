@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 16:55:22 by skapersk          #+#    #+#             */
-/*   Updated: 2024/09/17 18:05:05 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/09/19 23:19:28 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ class AForm {
 		bool		getSignature(void) const;
 		int			getGradeToExe(void) const;
 		int 		getGradeToSign(void) const;
-		void		execute(Bureaucrat const & executor) const = 0;
+		virtual void		execute(Bureaucrat const & executor) const = 0;
 		virtual void		beSigned(Bureaucrat &Bureaucrat);
 };
 

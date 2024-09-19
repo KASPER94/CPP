@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 12:18:29 by skapersk          #+#    #+#             */
-/*   Updated: 2024/09/17 16:06:38 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/09/19 23:17:55 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int main() {
 	Bureaucrat Cam;
 	AForm *Test = new ShrubberyCreationForm("test");
 
-	((ShrubberyCreationForm*)Test)->createFile();
+	((ShrubberyCreationForm*)Test)->execute(Jimmy);
 	Lou = new Bureaucrat("Lou", 150);
 	try {
 		Jimmy.incrementGrade();
