@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 11:05:57 by skapersk          #+#    #+#             */
-/*   Updated: 2024/07/30 12:25:28 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/09/04 15:53:33 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,17 @@
 int	main(void)
 {
 	PhoneBook	phone_book;
-	char		line[512];
+	// char		line[512];
+	std::string	input;
 
 	std::cout << "> ";
-	while (std::cin.getline(line, 512) && strcmp(line, "EXIT") != 0)
+	while (std::cin >> input)
 	{
-		if (!strcmp(line, "ADD"))
-			phone_book.add();	
-		else if (!strcmp(line, "SEARCH"))
+		if (!input.compare("EXIT"))
+			break ;
+		if (!input.compare("ADD"))
+			phone_book.add();
+		else if (!input.compare("SEARCH"))
 			phone_book.search();
 		std::cout << "> ";
 	}

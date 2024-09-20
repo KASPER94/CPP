@@ -6,7 +6,7 @@
 #    By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/11 15:03:40 by skapersk          #+#    #+#              #
-#    Updated: 2024/09/19 23:44:48 by skapersk         ###   ########.fr        #
+#    Updated: 2024/09/20 10:32:12 by skapersk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRC = main.cpp \
 	  ShrubberyCreationForm.cpp \
 	  PresidentialPardonForm.cpp \
 	  RobotomyRequestForm.cpp \
+	  Intern.cpp \
 
 OBJ = $(SRC:.cpp=.o)
 

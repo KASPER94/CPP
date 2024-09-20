@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 12:15:57 by skapersk          #+#    #+#             */
-/*   Updated: 2024/07/31 11:45:29 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/09/05 14:28:11 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,13 @@ void print_centered(std::string str, int width)
 	len = str.length();
     if (len >= width)
         std::cout << str.substr(0, width);
-    else 
+    else
 	{
         padding = (width - len) / 2;
-        for (int i = 0; i < padding; i++) 
+        for (int i = 0; i < padding; i++)
 			std::cout << ' ';
         std::cout << str;
-        for (int i = 0; i < (width - len - padding); i++) 
+        for (int i = 0; i < (width - len - padding); i++)
 			std::cout << ' ';
     }
 }
@@ -115,7 +115,7 @@ void	PhoneBook::search(void)
 	unsigned int nb_try;
 	unsigned long i;
 	std::string		index;
-	
+
 	if (this->_nb_contacts > 7)
 		nb_entries = 8;
 	else
@@ -126,7 +126,7 @@ void	PhoneBook::search(void)
 	std::cout << "index > ";
 	nb_try = 0;
 	i = 8;
-	while (std::getline(std::cin, index))
+	while (std::cin >> index)
 	{
 		i = 8;
 		if (index.empty())

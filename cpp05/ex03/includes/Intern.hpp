@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   Intern.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/29 12:16:03 by skapersk          #+#    #+#             */
-/*   Updated: 2024/09/04 15:47:59 by skapersk         ###   ########.fr       */
+/*   Created: 2024/09/20 10:21:33 by skapersk          #+#    #+#             */
+/*   Updated: 2024/09/20 10:37:19 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_H
-# define PHONEBOOK_H
+#ifndef INTERN_HPP
+# define INTERN_HPP
 
-# include "Contact.hpp"
+# include <iostream>
+# include <cstring>
+# include "AForm.hpp"
+# include "PresidentialPardonForm.hpp"
+# include "RobotomyRequestForm.hpp"
+# include "ShrubberyCreationForm.hpp"
 
-class	PhoneBook {
-	private:
-		Contact			_contacts[8];
-		unsigned int	_nb_contacts;
-
-		void	print(void);
+class Intern {
 	public:
-		PhoneBook(void);
-		~PhoneBook(void);
-
-		void	add(void);
-		void	search(void);
+		Intern();
+		~Intern();
+		Intern(const Intern &cpy);
+		Intern &operator=(const Intern &rhs);
+		AForm *makeForm(const std::string FormToCreate, const std::string TargetFromForm);
 };
 
 #endif

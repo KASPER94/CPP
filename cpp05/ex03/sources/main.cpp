@@ -6,13 +6,14 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 12:18:29 by skapersk          #+#    #+#             */
-/*   Updated: 2024/09/19 23:17:55 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/09/20 10:38:08 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
-#include "ShrubberyCreationForm.hpp"
+#include "Intern.hpp"
+// #include "ShrubberyCreationForm.hpp"
 
 int main() {
 	Bureaucrat Jimmy("jimmy", 2);
@@ -20,6 +21,9 @@ int main() {
 	Bureaucrat Cam;
 	AForm *Test = new ShrubberyCreationForm("test");
 
+	Intern someRandomIntern;
+	AForm* rrf;
+	rrf = someRandomIntern.makeForm("robotomy request", "Bender");
 	((ShrubberyCreationForm*)Test)->execute(Jimmy);
 	Lou = new Bureaucrat("Lou", 150);
 	try {
