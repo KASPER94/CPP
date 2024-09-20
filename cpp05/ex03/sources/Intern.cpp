@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 08:54:31 by skapersk          #+#    #+#             */
-/*   Updated: 2024/09/20 10:39:40 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/09/20 11:31:44 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,15 @@ static AForm	*makeShrubbery(const std::string target)
 
 AForm	*Intern::makeForm(const std::string FormToCreate, const std::string TargetFromForm)
 {
-	AForm *(*all_forms[])(const std::string target) = {&makePresident, &makeRobot, &makeShrubbery};
-	std::string forms[] = {"PresidentialPardonForm", "RobotomyRequestForm", "ShrubberyCreationForm"};
+	AForm *(*forms[])(const std::string target) = {&makePresident, &makeRobot, &makeShrubbery};
+	std::string form[] = {"PresidentialPardonForm", "RobotomyRequestForm", "ShrubberyCreationForm"};
 
 	for (int i = 0; i < 3; i++)
 	{
-		if (FormToCreate == forms[i])
+		if (FormToCreate == form[i])
 		{
-			std::cout << "Intern creates " << FormToCreate << " with target: " << TargetFromForm << std::endl;
-			return (all_forms[i](TargetFromForm));
+			std::cout << "\033[0;34mIntern creates " << FormToCreate << " with target: " << TargetFromForm << "\033[0m" << std::endl;
+			return (forms[i](TargetFromForm));
 		}
 	}
 

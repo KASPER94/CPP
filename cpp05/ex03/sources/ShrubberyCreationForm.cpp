@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 11:41:24 by skapersk          #+#    #+#             */
-/*   Updated: 2024/09/19 23:37:47 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/09/20 11:43:16 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm() {
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &cpy): AForm(cpy), _target(cpy._target) {
-	
+
 }
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &rhs){
@@ -29,13 +29,14 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
 	return (*this);
 }
 
-void ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
+void ShrubberyCreationForm::execute(Bureaucrat const &executor) const {
 	std::ofstream	file_out;
 	std::string		fileName;
-	
+
 	if (this->getSignature())
 		throw AForm::FormAlreadySigned();
     else if (executor.getGrade() <= this->getGradeToExe()) {
+		std::cout << "\033[0;34m" << executor.getName() << " executed " << this->getName() << "\033[0m" << std::endl;
         fileName = this->_target + "_shrubbery";
         file_out.open(fileName.c_str());
         if (file_out.is_open()) {

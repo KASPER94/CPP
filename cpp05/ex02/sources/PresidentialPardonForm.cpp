@@ -6,13 +6,13 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 22:31:59 by skapersk          #+#    #+#             */
-/*   Updated: 2024/09/19 23:54:45 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/09/20 11:45:18 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target): AForm("PresidentialPardonForm", false, 72, 45), _target(target) {
+PresidentialPardonForm::PresidentialPardonForm(std::string target): AForm("PresidentialPardonForm", false, 25, 5), _target(target) {
 	std::cout << "PresidentialPardonForm Constructor with the target: " << this->_target << " called" << std::endl;
 }
 
