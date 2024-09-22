@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 12:18:29 by skapersk          #+#    #+#             */
-/*   Updated: 2024/09/16 17:50:02 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/09/23 00:33:22 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,17 @@
 
 int main() {
 	Bureaucrat Jimmy("jimmy", 2);
-	Bureaucrat *Lou;
-	Bureaucrat Cam;
+	Bureaucrat *Louis;
+	Bureaucrat Antoine;
 
 	try {
-		Lou = new Bureaucrat("Lou", 158);
+		Louis = new Bureaucrat("Louis", 158);
 	}
 	catch (std::exception &e) {
 		std::cerr << e.what() << std::endl;
 	}
 	try {
-		Lou = new Bureaucrat("Lou", 150);
-	}
-	catch (std::exception &e) {
-		std::cerr << e.what() << std::endl;
-	}
-	try {
-		Jimmy.incrementGrade();
+		Louis = new Bureaucrat("Louis", 150);
 	}
 	catch (std::exception &e) {
 		std::cerr << e.what() << std::endl;
@@ -42,13 +36,25 @@ int main() {
 		std::cerr << e.what() << std::endl;
 	}
 	try {
-		Cam.decrementGrade();
+		Bureaucrat Victor(Jimmy);
 	}
 	catch (std::exception &e) {
 		std::cerr << e.what() << std::endl;
 	}
-	std::cout << Cam;
+	try {
+		Jimmy.incrementGrade();
+	}
+	catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
+	try {
+		Antoine.decrementGrade();
+	}
+	catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
+	std::cout << Antoine;
 	std::cout << Jimmy;
-	delete Lou;
+	delete Louis;
 	return (0);
 }
