@@ -6,11 +6,12 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 12:05:50 by skapersk          #+#    #+#             */
-/*   Updated: 2024/09/22 19:56:07 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/09/22 23:55:14 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cstdlib>
+#include <unistd.h>
 #include "Base.hpp"
 #include "AClass.hpp"
 #include "BClass.hpp"
@@ -59,6 +60,7 @@ void	identify(Base &p) {
 int	main(void) {
 	Base *tmp;
 
+	std::srand(time(NULL) * getpid() * getpid());
 	std::cout << "identify with pointer 10 Classes between A, B and C denerated randomly" << std::endl;
 	for (int i = 0; i < 10; i++) {
 		tmp = generate();
