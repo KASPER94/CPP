@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 16:55:04 by skapersk          #+#    #+#             */
-/*   Updated: 2024/09/16 23:10:14 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/09/23 01:00:14 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,42 @@ Form::Form(std::string name, bool sign, const int gradeToSign, const int gradeTo
 		throw FormGradeTooHighException();
 	else if (gradeToSign > 150 || gradeToExe > 150)
 		throw FormGradeTooLowException();
+	std::cout << "Form " << name << " created with required grade for signing: " << gradeToSign;
+	std::cout << " and for executing: " << gradeToExe << std::endl;
 }
 
 Form::~Form() {
-
+	std::cout << "Form " << this->_name;
+	if (this->getSignature())
+		std::cout << " signed";
+	else
+		std::cout << " unsigned";
+	std::cout << " destructed" << std::endl;
 }
 
 Form::Form(const Form &cpy): _name(cpy._name), _signature(cpy._signature), _gradeToSign(cpy._gradeToSign), _gradeToExe(cpy._gradeToExe) {
-	
+		std::cout << "Form " << cpy.getName();
+		if (this->getSignature())
+			std::cout << " signed";
+		else
+			std::cout << "  not signed";
+		std::cout << " with required grade to sign: " << cpy.getGradeToSign();
+		std::cout << " and grade to execute: " << cpy.getGradeToExe();
+		std::cout << " copied" << std::endl;
 }
 
 Form &Form::operator=(const Form &rhs) {
 	if (this != &rhs) {
 		this->_signature = rhs._signature;
 	}
+	std::cout << "Form " << rhs.getName();
+	if (rhs.getSignature())
+		std::cout << " signed";
+	else
+		std::cout << "  not signed";
+	std::cout << " with required grade to sign: " << rhs.getGradeToSign();
+	std::cout << " and grade to execute: " << rhs.getGradeToExe();
+	std::cout << " copied by assignment operator" << std::endl;
 	return (*this);
 }
 
@@ -81,3 +103,12 @@ void	Form::beSigned(Bureaucrat &Bureaucrat) {
 	this->_signature = true;
 }
 
+std::ostream	&operator<<(std::ostream &o, const Form &Form) {
+	if (Form.getSignature())
+		o << "Form " << Form.getName() << ", signed";
+	else
+		o << "Form " << Form.getName() << ", not signed";
+	o << ", required grade for signing: " << Form.getGradeToSign();
+	o << ", required grade for executing: " << Form.getGradeToExe();
+	return (o);
+}
