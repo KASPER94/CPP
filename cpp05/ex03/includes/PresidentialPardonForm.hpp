@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 11:41:17 by skapersk          #+#    #+#             */
-/*   Updated: 2024/09/19 23:55:06 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/09/23 18:43:02 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ class PresidentialPardonForm : public AForm {
 		std::string	_target;
 
 	public:
+		PresidentialPardonForm(void);
 		PresidentialPardonForm(std::string target);
 		~PresidentialPardonForm();
 		PresidentialPardonForm(const PresidentialPardonForm &cpy);

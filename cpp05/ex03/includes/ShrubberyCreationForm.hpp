@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 11:41:24 by skapersk          #+#    #+#             */
-/*   Updated: 2024/09/19 23:33:51 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/09/23 18:42:44 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ class ShrubberyCreationForm : public AForm {
 		std::string	_target;
 
 	public:
+		ShrubberyCreationForm(void);
 		ShrubberyCreationForm(std::string target);
 		~ShrubberyCreationForm();
 		ShrubberyCreationForm(const ShrubberyCreationForm &cpy);

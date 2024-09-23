@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 22:31:59 by skapersk          #+#    #+#             */
-/*   Updated: 2024/09/23 18:00:59 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/09/23 18:35:16 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,10 @@ void	RobotomyRequestForm::execute(Bureaucrat const & executor) const {
 			}
 		}
 	}
-	else
+	else {
+		std::cout << "can't execute the form because : ";
 		throw Bureaucrat::GradeTooLowException();
+	}
 }
 
 std::string	RobotomyRequestForm::getTarget() const {

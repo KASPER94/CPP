@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 17:20:57 by skapersk          #+#    #+#             */
-/*   Updated: 2024/09/23 15:25:17 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/09/23 18:40:22 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ void	Bureaucrat::incrementGrade(void) {
 		throw Bureaucrat::GradeTooHighException();
 	}
 	else {
-		this->_grade--;
 		std::cout << this->_name << " has been graded to " << this->_grade << std::endl;
+		this->_grade--;
 	}
 }
 

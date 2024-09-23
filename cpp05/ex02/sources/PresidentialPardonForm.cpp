@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 22:31:59 by skapersk          #+#    #+#             */
-/*   Updated: 2024/09/23 18:00:46 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/09/23 18:34:16 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,10 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPard
 }
 
 void	PresidentialPardonForm::execute(Bureaucrat const & executor) const {
-	if (executor.getGrade() >= this->getGradeToExe())
+	if (executor.getGrade() >= this->getGradeToExe()) {
+		std::cout << "can't execute the form because : ";
 		throw Bureaucrat::GradeTooLowException();
+	}
 	else if (this->getSignature() == false)
 		throw (AForm::NotSignedException());
 	else

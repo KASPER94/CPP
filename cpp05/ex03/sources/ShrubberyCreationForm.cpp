@@ -6,37 +6,41 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 11:41:24 by skapersk          #+#    #+#             */
-/*   Updated: 2024/09/20 11:43:16 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/09/23 18:05:39 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreationForm", false, 145, 137), _target(target) {
-	std::cout << "ShrubberyCreationForm: Constructor called with target (" << this->_target << ")" << std::endl;
+ShrubberyCreationForm::ShrubberyCreationForm(void) : AForm("ShrubberyCreationForm", false, 145, 137), _target("Default name") {
+	std::cout << "ShrubberyCreationForm created with default target" << std::endl;
 }
 
-ShrubberyCreationForm::~ShrubberyCreationForm() {
-	std::cout << "ShrubberyCreationForm: Destructor with target (" << this->_target << ")" <<std::endl;
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreationForm", false, 145, 137), _target(target) {
+	std::cout << "ShrubberyCreationForm created with target:" << this->_target << std::endl;
+}
+
+ShrubberyCreationForm::~ShrubberyCreationForm(void) {
+	std::cout << "ShrubberyCreationForm destructed with target: " << this->_target << std::endl;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &cpy): AForm(cpy), _target(cpy._target) {
-
+	std::cout << "ShrubberyCreationForm with target: " << this->_target << " copied" << std::endl; 
 }
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &rhs){
 	(void)rhs;
+	std::cout << "ShrubberyCreationForm with target: " << this->_target << " copied with assignment operator" << std::endl; 
 	return (*this);
 }
 
-void ShrubberyCreationForm::execute(Bureaucrat const &executor) const {
+void ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
 	std::ofstream	file_out;
 	std::string		fileName;
-
-	if (this->getSignature())
-		throw AForm::FormAlreadySigned();
+	
+	if (!this->getSignature())
+		throw AForm::NotSignedException();
     else if (executor.getGrade() <= this->getGradeToExe()) {
-		std::cout << "\033[0;34m" << executor.getName() << " executed " << this->getName() << "\033[0m" << std::endl;
         fileName = this->_target + "_shrubbery";
         file_out.open(fileName.c_str());
         if (file_out.is_open()) {
@@ -52,11 +56,26 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const {
             file_out << "/_-/\\\\/ ._\\//_/__/  ,\\_//__\\\\/.  \\_//__/_" << std::endl;
             file_out.close();
         }
+		std::cout << "Form has been executed ! checkout :" << fileName << std::endl;
     }
-    else
+    else {
+		std::cout << "can't execute the form because : ";
         throw Bureaucrat::GradeTooLowException();
+	}
 }
 
 std::string	ShrubberyCreationForm::getTarget() const {
 	return (this->_target);
 }
+
+// std::ostream	&operator<<(std::ostream &o, const ShrubberyCreationForm &Form) {
+// 	if (Form.getSignature())
+// 		o << "Form " << Form.getName() << ", signed: yes";
+// 	else
+// 		o << "Form " << Form.getName() << ", signed: no";
+// 	o << ", required for signing: " << Form.getGradeToSign();
+// 	o << ", required for executing: " << Form.getGradeToExe();
+// 	o << ", target: " << Form.getTarget();
+// 	return (o);
+
+// }

@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 11:41:21 by skapersk          #+#    #+#             */
-/*   Updated: 2024/09/19 23:58:58 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/09/23 18:42:53 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ class RobotomyRequestForm : public AForm {
 	private:
 		std::string _target;
 	public:
+		RobotomyRequestForm(void);
 		RobotomyRequestForm(std::string target);
 		~RobotomyRequestForm();
 		RobotomyRequestForm(const RobotomyRequestForm &cpy);

@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 16:55:22 by skapersk          #+#    #+#             */
-/*   Updated: 2024/09/19 23:19:28 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/09/23 18:42:19 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,10 @@ class AForm {
 				virtual const char* what() const throw();
 		};
 		class FormAlreadySigned : public std::exception {
+			public:
+				virtual const char* what() const throw();
+		};
+		class NotSignedException : public std::exception {
 			public:
 				virtual const char* what() const throw();
 		};
