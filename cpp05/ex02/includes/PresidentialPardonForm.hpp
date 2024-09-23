@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 11:41:17 by skapersk          #+#    #+#             */
-/*   Updated: 2024/09/23 17:36:31 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/09/23 21:51:56 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class PresidentialPardonForm : public AForm {
 
 		PresidentialPardonForm &operator=(const PresidentialPardonForm &rhs);
 		void	execute(Bureaucrat const & executor) const;
-		std::string	getTarget() const;
+		std::string	getTarget(void) const;
 };
 
 // std::ostream	&operator<<(std::ostream &o, const PresidentialPardonForm &Form);

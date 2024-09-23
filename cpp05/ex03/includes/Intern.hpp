@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 10:21:33 by skapersk          #+#    #+#             */
-/*   Updated: 2024/09/20 10:37:19 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/09/23 21:49:47 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 class Intern {
 	public:
-		Intern();
+		Intern(void);
 		~Intern();
 		Intern(const Intern &cpy);
 		Intern &operator=(const Intern &rhs);

@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 22:31:59 by skapersk          #+#    #+#             */
-/*   Updated: 2024/09/23 18:35:16 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/09/23 21:51:26 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,17 +53,6 @@ void	RobotomyRequestForm::execute(Bureaucrat const & executor) const {
 	}
 }
 
-std::string	RobotomyRequestForm::getTarget() const {
+std::string	RobotomyRequestForm::getTarget(void) const {
 	return (this->_target);
 }
-
-// std::ostream	&operator<<(std::ostream &o, const RobotomyRequestForm &Form) {
-// 	if (Form.getSignature())
-// 		o << "Form " << Form.getName() << ", signed: yes";
-// 	else
-// 		o << "Form " << Form.getName() << ", signed: no";
-// 	o << ", required for signing: " << Form.getGradeToSign();
-// 	o << ", required for executing: " << Form.getGradeToExe();
-// 	o << ", target: " << Form.getTarget();
-// 	return (o);
-// }

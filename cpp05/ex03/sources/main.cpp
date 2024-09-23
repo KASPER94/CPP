@@ -6,14 +6,13 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 12:18:29 by skapersk          #+#    #+#             */
-/*   Updated: 2024/09/23 18:52:46 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/09/23 21:47:01 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
 #include "Intern.hpp"
-// #include "ShrubberyCreationForm.hpp"
 
 int main() {
 	Intern someRandomIntern;

@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 11:41:24 by skapersk          #+#    #+#             */
-/*   Updated: 2024/09/23 18:05:39 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/09/23 21:51:31 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("Shrubb
 	std::cout << "ShrubberyCreationForm created with target:" << this->_target << std::endl;
 }
 
-ShrubberyCreationForm::~ShrubberyCreationForm(void) {
+ShrubberyCreationForm::~ShrubberyCreationForm() {
 	std::cout << "ShrubberyCreationForm destructed with target: " << this->_target << std::endl;
 }
 
@@ -64,18 +64,6 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
 	}
 }
 
-std::string	ShrubberyCreationForm::getTarget() const {
+std::string	ShrubberyCreationForm::getTarget(void) const {
 	return (this->_target);
 }
-
-// std::ostream	&operator<<(std::ostream &o, const ShrubberyCreationForm &Form) {
-// 	if (Form.getSignature())
-// 		o << "Form " << Form.getName() << ", signed: yes";
-// 	else
-// 		o << "Form " << Form.getName() << ", signed: no";
-// 	o << ", required for signing: " << Form.getGradeToSign();
-// 	o << ", required for executing: " << Form.getGradeToExe();
-// 	o << ", target: " << Form.getTarget();
-// 	return (o);
-
-// }

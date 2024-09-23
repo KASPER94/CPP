@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 16:55:22 by skapersk          #+#    #+#             */
-/*   Updated: 2024/09/23 14:50:11 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/09/23 21:53:04 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class Form {
 		const int	_gradeToExe;
 
 	public:
-		Form();
+		Form(void);
 		Form(std::string name, const int gradeToSign, const int gradeToExe);
 		~Form();
 		Form(const Form &cpy);

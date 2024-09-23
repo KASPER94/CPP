@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 11:41:21 by skapersk          #+#    #+#             */
-/*   Updated: 2024/09/23 18:42:53 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/09/23 21:50:26 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class RobotomyRequestForm : public AForm {
 
 		RobotomyRequestForm &operator=(const RobotomyRequestForm &rhs);
 		void	execute(Bureaucrat const & executor) const;
-		std::string	getTarget() const;
+		std::string	getTarget(void) const;
 };
 
 #endif

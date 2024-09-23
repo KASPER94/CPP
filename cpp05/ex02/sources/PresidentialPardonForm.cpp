@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 22:31:59 by skapersk          #+#    #+#             */
-/*   Updated: 2024/09/23 18:34:16 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/09/23 21:52:25 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ PresidentialPardonForm::PresidentialPardonForm(std::string target): AForm("Presi
 	std::cout << "PresidentialPardonForm created with the target: " << this->_target << std::endl;
 }
 
-PresidentialPardonForm::~PresidentialPardonForm(void) {
+PresidentialPardonForm::~PresidentialPardonForm() {
 	std::cout << "PresidentialPardonForm destructed with the target: " << this->_target << std::endl;
 }
 
@@ -45,18 +45,6 @@ void	PresidentialPardonForm::execute(Bureaucrat const & executor) const {
 		std::cout << this->getTarget() << " has been pardoned by Zaphod Beeblebrox" << std::endl;
 }
 
-std::string	PresidentialPardonForm::getTarget() const {
+std::string	PresidentialPardonForm::getTarget(void) const {
 	return (this->_target);
 }
-
-// std::ostream	&operator<<(std::ostream &o, const PresidentialPardonForm &Form) {
-// 	if (Form.getSignature())
-// 		o << "Form " << Form.getName() << ", signed: yes";
-// 	else
-// 		o << "Form " << Form.getName() << ", signed: no";
-// 	o << ", required for signing: " << Form.getGradeToSign();
-// 	o << ", required for executing: " << Form.getGradeToExe();
-// 	o << ", target: " << Form.getTarget();
-// 	return (o);
-
-// }

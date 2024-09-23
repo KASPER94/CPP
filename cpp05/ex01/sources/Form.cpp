@@ -6,13 +6,13 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 16:55:04 by skapersk          #+#    #+#             */
-/*   Updated: 2024/09/23 15:49:38 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/09/23 21:53:46 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 
-Form::Form(): _name("Default"), _signature(false), _gradeToSign(150), _gradeToExe(150) {
+Form::Form(void): _name("Default"), _signature(false), _gradeToSign(150), _gradeToExe(150) {
 	std::cout << "Default Form created with the lowest grade (150) for signing and executing !" << std::endl;
 }
 

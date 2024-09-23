@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 16:55:22 by skapersk          #+#    #+#             */
-/*   Updated: 2024/09/23 16:17:06 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/09/23 21:51:47 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class AForm {
 		const int	_gradeToExe;
 
 	public:
-		AForm();
+		AForm(void);
 		AForm(std::string name, bool sign, const int gradeToSign, const int gradeToExe);
 		virtual ~AForm();
 		AForm(const AForm &cpy);
