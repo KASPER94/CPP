@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 16:55:22 by skapersk          #+#    #+#             */
-/*   Updated: 2024/09/16 22:59:06 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/09/23 14:50:11 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class Form {
 
 	public:
 		Form();
-		Form(std::string name, bool sign, const int gradeToSign, const int gradeToExe);
+		Form(std::string name, const int gradeToSign, const int gradeToExe);
 		~Form();
 		Form(const Form &cpy);
 		Form &operator=(const Form &rhs);

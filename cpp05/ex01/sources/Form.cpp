@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 16:55:04 by skapersk          #+#    #+#             */
-/*   Updated: 2024/09/23 01:00:14 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/09/23 15:49:38 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ Form::Form(): _name("Default"), _signature(false), _gradeToSign(150), _gradeToEx
 	std::cout << "Default Form created with the lowest grade (150) for signing and executing !" << std::endl;
 }
 
-Form::Form(std::string name, bool sign, const int gradeToSign, const int gradeToExe) : _name(name), _signature(sign), _gradeToSign(gradeToSign), _gradeToExe(gradeToExe) {
+Form::Form(std::string name, const int gradeToSign, const int gradeToExe) : _name(name), _signature(false), _gradeToSign(gradeToSign), _gradeToExe(gradeToExe) {
 	if (gradeToSign < 1 || gradeToExe < 1)
 		throw FormGradeTooHighException();
 	else if (gradeToSign > 150 || gradeToExe > 150)
@@ -30,19 +30,19 @@ Form::~Form() {
 	if (this->getSignature())
 		std::cout << " signed";
 	else
-		std::cout << " unsigned";
+		std::cout << " not signed";
 	std::cout << " destructed" << std::endl;
 }
 
 Form::Form(const Form &cpy): _name(cpy._name), _signature(cpy._signature), _gradeToSign(cpy._gradeToSign), _gradeToExe(cpy._gradeToExe) {
-		std::cout << "Form " << cpy.getName();
-		if (this->getSignature())
-			std::cout << " signed";
-		else
-			std::cout << "  not signed";
-		std::cout << " with required grade to sign: " << cpy.getGradeToSign();
-		std::cout << " and grade to execute: " << cpy.getGradeToExe();
-		std::cout << " copied" << std::endl;
+	std::cout << "Form " << cpy.getName();
+	if (this->getSignature())
+		std::cout << " signed";
+	else
+		std::cout << "  not signed";
+	std::cout << " with required grade to sign: " << cpy.getGradeToSign();
+	std::cout << " and grade to execute: " << cpy.getGradeToExe();
+	std::cout << " copied" << std::endl;
 }
 
 Form &Form::operator=(const Form &rhs) {
@@ -89,6 +89,8 @@ int	Form::getGradeToSign(void) const {
 }
 
 void	Form::beSigned(Bureaucrat &Bureaucrat) {
+	if (this->getSignature())
+		throw Form::FormAlreadySigned();
 	if (Bureaucrat.getGrade() <= this->getGradeToSign()) {
 		this->_signature = true;
 	}
@@ -96,10 +98,7 @@ void	Form::beSigned(Bureaucrat &Bureaucrat) {
 		std::cout << Bureaucrat.getName() << " couldn't sign " << this->getName() << " because ";
 		throw Bureaucrat::GradeTooLowException();
 		std::cout << std::endl;
-	}
-	if (this->getSignature())
-		throw Form::FormAlreadySigned();
-		
+	}		
 	this->_signature = true;
 }
 

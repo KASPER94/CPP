@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 17:20:57 by skapersk          #+#    #+#             */
-/*   Updated: 2024/09/23 00:32:50 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/09/23 15:25:08 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	Bureaucrat::incrementGrade(void) {
 	}
 	else {
 		this->_grade--;
-		std::cout << this->_name << " have been graded to " << this->_grade << std::endl;
+		std::cout << this->_name << " has been graded to " << this->_grade << std::endl;
 	}
 }
 
@@ -75,7 +75,7 @@ void	Bureaucrat::decrementGrade(void) {
 	}
 	else {
 		this->_grade++;
-		std::cout << this->_name << " have been demoted to " << this->_grade << std::endl;
+		std::cout << this->_name << " has been demoted to " << this->_grade << std::endl;
 	}
 }
 

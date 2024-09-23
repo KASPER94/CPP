@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 12:18:29 by skapersk          #+#    #+#             */
-/*   Updated: 2024/09/23 00:33:22 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/09/23 15:03:25 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int main() {
 		Louis = new Bureaucrat("Louis", 158);
 	}
 	catch (std::exception &e) {
+		std::cout <<"Can't create Bureaucrat because : ";
 		std::cerr << e.what() << std::endl;
 	}
 	try {
