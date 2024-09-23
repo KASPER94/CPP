@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 17:20:57 by skapersk          #+#    #+#             */
-/*   Updated: 2024/09/23 15:25:08 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/09/23 21:55:12 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ Bureaucrat::Bureaucrat(const Bureaucrat &cpy): _name(cpy.getName()), _grade(cpy.
 	std::cout << cpy.getGrade() << " copied" << std::endl;
 }
 
-Bureaucrat::~Bureaucrat(void) {
+Bureaucrat::~Bureaucrat() {
 	std::cout << "Bureaucrat named " << this->_name << " with grade ";
 	std::cout << this->_grade << " destructed" << std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 17:21:04 by skapersk          #+#    #+#             */
-/*   Updated: 2024/08/23 16:46:27 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/09/23 21:54:58 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Bureaucrat {
 		int	_grade;
 
 	public:
-		Bureaucrat();
+		Bureaucrat(void);
 		Bureaucrat(std::string name, int grade);
 		Bureaucrat(const Bureaucrat &cpy);
 		~Bureaucrat();
@@ -38,8 +38,8 @@ class Bureaucrat {
 			public:
 				virtual const char* what() const throw();
 		};
-		void	incrementGrade();
-		void	decrementGrade();
+		void	incrementGrade(void);
+		void	decrementGrade(void);
 };
 
 std::ostream	&operator<<(std::ostream &o, const Bureaucrat &Bureaucrat);
