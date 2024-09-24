@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 01:20:26 by skapersk          #+#    #+#             */
-/*   Updated: 2024/09/24 14:39:29 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/09/24 22:46:23 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 
 template<class T>
 Array<T>::Array(void): _size(0), _array(NULL) {
+	try {
+		this->_array = new T[];
+	}
+	catch(std::bad_alloc &e) {
+		std::cerr << e.what() << std::endl;
+	}
 }
 
 template<class T>
@@ -21,15 +27,13 @@ Array<T>::Array(unsigned int n): _size(n), _array(NULL) {
 	try {
 		this->_array = new T[this->_size];
 	}
-	catch (std::exception &e) {
-		throw Array::OutofBound();
+	catch(std::bad_alloc &e) {
+		std::cerr << e.what() << std::endl;
 	}
 }
 
 template<class T>
 Array<T>::Array(const Array &cpy): _size(0), _array(NULL) {
-	// for (size_t i = 0; i < cpy._size; i++)
-	// 	this->_array[i] = cpy._array[i];
 	*this = cpy;
 }
 
@@ -49,21 +53,11 @@ Array<T> &Array<T>::operator=(const Array &rhs) {
 			this->_array[i] = rhs._array[i];
  		}
  	}
-	catch(std::exception &e) {
-		throw (Array::OutofBound());
-	}
 	catch(std::bad_alloc &e) {
 		std::cerr << e.what() << std::endl;
 	}
 	return (*this);
 }
-
-// const T &Array::operator[](const unsigned int n) const {
-// 	if (n >= this->_size) {
-// 		throw Array::OutofBound();
-// 	}
-// 	return (this->_array[n]);
-// }
 
 template<class T>
 T &Array<T>::operator[](const unsigned int n) {
@@ -75,10 +69,6 @@ T &Array<T>::operator[](const unsigned int n) {
 
 template<class T>
 unsigned int Array<T>::size(void) const {
-	// size_t i;
-
-	// while (this->_array[i])
-	// 	i++;
 	return (this->_size);
 }
 
@@ -86,3 +76,4 @@ template<class T>
 const char *Array<T>::OutofBound::what() const throw() {
 	return ((char*) "Error: Index is out of bounds.");
 }
+
