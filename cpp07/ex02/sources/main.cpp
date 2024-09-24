@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 12:05:50 by skapersk          #+#    #+#             */
-/*   Updated: 2024/09/24 12:29:38 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/09/24 15:33:01 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	main(void) {
 			return 1;
 		}
 	}
+
 	try
 	{
 		numbers[-2] = 0;
@@ -48,6 +49,7 @@ int	main(void) {
 	{
 		std::cerr << e.what() << '\n';
 	}
+
 	try
 	{
 		numbers[MAX_VAL] = 0;
@@ -61,6 +63,6 @@ int	main(void) {
 	{
 		numbers[i] = rand();
 	}
-	delete [] mirror;//
+	delete [] mirror;
 	return 0;
 }

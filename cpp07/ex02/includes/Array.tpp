@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 01:20:26 by skapersk          #+#    #+#             */
-/*   Updated: 2024/09/24 12:45:37 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/09/24 14:39:29 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ Array<T>::Array(unsigned int n): _size(n), _array(NULL) {
 }
 
 template<class T>
-Array<T>::Array(const Array &cpy): _size(cpy._size), _array(NULL) {
+Array<T>::Array(const Array &cpy): _size(0), _array(NULL) {
 	// for (size_t i = 0; i < cpy._size; i++)
 	// 	this->_array[i] = cpy._array[i];
 	*this = cpy;
@@ -44,13 +44,16 @@ Array<T> &Array<T>::operator=(const Array &rhs) {
 	if (this->_array)
 		delete [] this->_array;
 	try {
-		this->_array = new T[this->_size];
+		this->_array = new T[rhs._size];
 		for (size_t i = 0; i < rhs._size; i++){
 			this->_array[i] = rhs._array[i];
  		}
  	}
-	catch (std::exception &e) {
+	catch(std::exception &e) {
 		throw (Array::OutofBound());
+	}
+	catch(std::bad_alloc &e) {
+		std::cerr << e.what() << std::endl;
 	}
 	return (*this);
 }
