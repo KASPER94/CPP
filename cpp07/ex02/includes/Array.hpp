@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 11:36:24 by skapersk          #+#    #+#             */
-/*   Updated: 2024/09/24 01:19:24 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/09/24 12:27:28 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,16 @@ class Array {
 		Array(void);
 		Array(unsigned int n);
 		Array(const Array &cpy);
-		~Array();
+		virtual ~Array();
 		Array &operator=(const Array &rhs);
 
-		T &operator[](const unsigned int n);
+		// const T &operator[](const unsigned int n) const;
+		T &operator[](const unsigned int n) ;
 		unsigned int size(void) const;
 		class OutofBound : public std::exception {
 			public :
-				const char *what() const throw();
-		}
-}
-
+				virtual const char *what() const throw();
+		};
+};
 
 #endif
