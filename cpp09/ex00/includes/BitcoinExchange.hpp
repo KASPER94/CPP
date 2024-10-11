@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: peanut <peanut@student.42.fr>              +#+  +:+       +#+        */
+/*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 11:36:24 by skapersk          #+#    #+#             */
-/*   Updated: 2024/10/10 14:26:03 by peanut           ###   ########.fr       */
+/*   Updated: 2024/10/11 16:45:08 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,15 @@
 # define BITCOINEXCHANGE_HPP
 
 # include <iostream>
+# include <stdlib.h>
 # include <fstream>
-
+# include <ctime>
+# include <map>
 
 class BitcoinExchange{
     private:
         bool _dataValid;
+		std::map<long, double>	_db;
     public:
         BitcoinExchange();
         ~BitcoinExchange();

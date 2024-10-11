@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: peanut <peanut@student.42.fr>              +#+  +:+       +#+         #
+#    By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/11 15:03:40 by skapersk          #+#    #+#              #
-#    Updated: 2024/10/10 11:02:34 by peanut           ###   ########.fr        #
+#    Updated: 2024/10/11 16:01:53 by skapersk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRC_DIR = sources/
 OBJ_DIR = objects/
 
 SRC = main.cpp \
+	  BitcoinExchange.cpp \
 
 OBJ = $(SRC:.cpp=.o)
 
