@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 11:03:26 by peanut            #+#    #+#             */
-/*   Updated: 2024/10/11 17:05:43 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/10/11 17:17:07 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,14 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &rhs){
 }
 
 void	getDateParts(std::string date, int year, int month, int days) {
+
 	int	end = date.find("-");
 	year = std::atoi(date.substr(0, end).c_str());
-	std::cout << year << std::endl;
-	end =
-	(void)month;
+	std::cout << year << " ";
+	date.erase(0, end + 1);
+	end = date.find("-");
+	std::cout << month << std::endl;
+	month = std::atoi(date.substr(0, end).c_str());
 	(void)days;
 }
 
