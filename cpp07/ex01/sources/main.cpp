@@ -6,22 +6,22 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 12:05:50 by skapersk          #+#    #+#             */
-/*   Updated: 2024/09/24 00:48:59 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/10/11 14:46:14 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "iter.hpp"
-#include <stdlib.h> 
+#include <stdlib.h>
 #include <ctime>
 #include <cstdlib>
-#include <unistd.h> 
+#include <unistd.h>
 
 void display0(int const & i) {
-	std::cout << i << 0<< std::endl;
+	std::cout << i << 0 << std::endl;
 }
 
-int	set_int(int &i) {
-	i = std::rand();
+int	set_int(void) {
+	int i = std::rand();
 	return (i);
 }
 
@@ -32,10 +32,10 @@ void display0T(T const &t) {
 
 int	main(void) {
 	int tab[10];
-	
+
 	std::srand(time(NULL) * getpid() * getpid());
 	for (int i = 0; i < 10; i++) {
-		tab[i] = set_int(i);
+		tab[i] = set_int();
 	}
 	iter(tab, 10, display0);
 	std::cout << std::endl;

@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 01:20:26 by skapersk          #+#    #+#             */
-/*   Updated: 2024/09/24 22:46:23 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/10/10 18:07:07 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,6 @@
 
 template<class T>
 Array<T>::Array(void): _size(0), _array(NULL) {
-	try {
-		this->_array = new T[];
-	}
-	catch(std::bad_alloc &e) {
-		std::cerr << e.what() << std::endl;
-	}
 }
 
 template<class T>
@@ -76,4 +70,3 @@ template<class T>
 const char *Array<T>::OutofBound::what() const throw() {
 	return ((char*) "Error: Index is out of bounds.");
 }
-

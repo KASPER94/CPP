@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 11:36:24 by skapersk          #+#    #+#             */
-/*   Updated: 2024/09/24 00:25:17 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/10/11 14:44:08 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 # include <iostream>
 
-template<typename T>
-void iter(T *tab, int length, void(*f)(T const &t)) {
+template<typename T, typename Func>
+void iter(T *tab, int length, Func f) {
 	if (tab == NULL || f == NULL)
 		return ;
 	for (int i = 0; i < length; i++)

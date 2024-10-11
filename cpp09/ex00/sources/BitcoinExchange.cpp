@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: peanut <peanut@student.42.fr>              +#+  +:+       +#+        */
+/*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 11:03:26 by peanut            #+#    #+#             */
-/*   Updated: 2024/10/10 18:23:49 by peanut           ###   ########.fr       */
+/*   Updated: 2024/10/11 15:49:21 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,19 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &rhs){
 
 }
 
+long getTimestamp(std::string line) {
+
+}
+
 bool parsingLine(const std::string line) {
+	long	timestamp;
+
     if (line.length() != 12)
         return (false);
-    
+	timestamp = getTimestamp(line.substr(0, line.find(",")));
+	if (timestamp == -1)
+		return (false);
+
 }
 
 void BitcoinExchange::checkDataBase(void) {
