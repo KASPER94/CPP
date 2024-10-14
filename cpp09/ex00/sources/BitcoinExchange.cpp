@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 11:03:26 by peanut            #+#    #+#             */
-/*   Updated: 2024/10/14 12:48:34 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/10/14 15:35:27 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,18 @@ void	getDateParts(std::string date, int &year, int &month, int &days) {
 	date.erase(0, end + 1);
 }
 
+bool checkLeapYear(std::tm tm){
+	if (tm.tm_year % 4 == 0) {
+		if (tm.tm_year % 100 == 0 && tm.tm_year % 400 == 0) {
+			return (true);
+		}
+	}
+	return (false);
+}
+
 long getTimestamp(std::string line) {
 	std::tm		tm;
-	// std::time_t t;
+	std::time_t time;
 	int			year = 0;
 	int			month = 0;
 	int			day = 0;
@@ -52,21 +61,36 @@ long getTimestamp(std::string line) {
 	if (line.empty()) {
 		return (-1);
 	}
-	getDateParts(line, year, month, day);
 	if (strptime(line.c_str(), "%Y-%m-%d", &tm) == NULL)
-		std::cout << "galere" << std::endl;
-	return (0);
+		return (-1);
+	getDateParts(line, year, month, day);
+	if (tm.tm_year + 1900 != year || tm.tm_mon + 1 != month || tm.tm_mday != day )
+		return (-1);
+	if (year < 1900 || year > 3000)
+		return (-1);
+	if (month == 2) {
+		if ((checkLeapYear(tm) && tm.tm_mday > 28) || (!checkLeapYear(tm) && tm.tm_mday > 29) )
+			return (-1);
+	}
+	if ((month == 4 || month == 6 || month == 9 || month == 11) && day > 30)
+		return (-1);
+	time = std::mktime(&tm);
+	return (time);
 }
 
-bool parsingLine(const std::string line) {
+bool BitcoinExchange::parsingLine(const std::string line) {
 	long	timestamp;
+	double	price;
 
-    if (line.length() < 12) {
-        return (false);
+	if (line.length() < 12) {
+		return (false);
 	}
 	timestamp = getTimestamp(line.substr(0, line.find(",")));
 	if (timestamp == -1)
 		return (false);
+	int start = line.find(",");
+	price = std::atof(line.substr((start + 1), line.size()).c_str());
+	this->_db.insert(std::pair<long, double>(timestamp, price));
 	return (true);
 }
 
@@ -83,6 +107,7 @@ void BitcoinExchange::checkDataBase(void) {
             if (!parsingLine(line))
                 this->_dataValid = false;
         }
+		std::cout << this->_db.begin()->second << std::endl;
     }
     else {
         data.close();
