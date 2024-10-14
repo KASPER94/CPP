@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 11:03:26 by peanut            #+#    #+#             */
-/*   Updated: 2024/10/11 17:17:07 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/10/14 12:48:34 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,20 +29,21 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &rhs){
 	return (*this);
 }
 
-void	getDateParts(std::string date, int year, int month, int days) {
+void	getDateParts(std::string date, int &year, int &month, int &days) {
 
 	int	end = date.find("-");
 	year = std::atoi(date.substr(0, end).c_str());
-	std::cout << year << " ";
 	date.erase(0, end + 1);
 	end = date.find("-");
-	std::cout << month << std::endl;
 	month = std::atoi(date.substr(0, end).c_str());
-	(void)days;
+	date.erase(0, end + 1);
+	end = date.find(",");
+	days = std::atoi(date.substr(0, end).c_str());
+	date.erase(0, end + 1);
 }
 
 long getTimestamp(std::string line) {
-	// std::tm		tm;
+	std::tm		tm;
 	// std::time_t t;
 	int			year = 0;
 	int			month = 0;
@@ -52,13 +53,15 @@ long getTimestamp(std::string line) {
 		return (-1);
 	}
 	getDateParts(line, year, month, day);
+	if (strptime(line.c_str(), "%Y-%m-%d", &tm) == NULL)
+		std::cout << "galere" << std::endl;
 	return (0);
 }
 
 bool parsingLine(const std::string line) {
 	long	timestamp;
 
-    if (line.length() != 12) {
+    if (line.length() < 12) {
         return (false);
 	}
 	timestamp = getTimestamp(line.substr(0, line.find(",")));
