@@ -6,34 +6,46 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 11:03:26 by peanut            #+#    #+#             */
-/*   Updated: 2024/10/15 15:21:11 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/10/15 15:47:29 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
-void BitcoinExchange::checkDataBase(void) {
-    std::ifstream data;
-    std::string   line;
+void	rtrim(std::string &s) {
+	int	i = s.length() - 1;
 
-    data.open("db/data.csv");
-    if (data.good()) {
-        this->_dataValid = true;
-        for (; std::getline(data, line) && this->_dataValid;) {
-            if (line == "date,exchange_rate")
-                continue ;
-            if (!parsingLine(line)) {
-                this->_dataValid = false;
-				data.close();
-				throw InvalidData();
-			}
-        }
-    }
-    else {
-        data.close();
-        throw noDataInDir();
-    }
-    data.close();
+	while (std::isspace(s[i]))
+		i--;
+    s = s.substr(0, i + 1);
+}
+
+void	ltrim(std::string &s) {
+	int	i = s.length() - 1;
+
+	while (std::isspace(s[i]))
+		i++;
+    s = s.substr(0, i + 1);
+}
+
+std::map<int, std::string>	split_trim(std::string str, char c) {
+	std::map<int, std::string>	split;
+	std::string					sub;
+	int							i = 0;
+
+	int end = str.find(c);
+	while (end != -1) {
+		sub = str.substr(0, end);
+		ltrim(sub);
+		rtrim(sub);
+		split.insert(std::pair<int, std::string>(i++, sub));
+		str.erase(str.begin(), str.begin() + end + 1);
+		end = str.find(c);
+	}
+	ltrim(str);
+	rtrim(str);
+	split.insert(std::pair<int, std::string>(i++, str));
+	return (split);
 }
 
 bool	BitcoinExchange::convert(const std::string input_db) {
@@ -46,5 +58,8 @@ bool	BitcoinExchange::convert(const std::string input_db) {
 		input.close();
 		return (false);
 	}
-	std::getline(input_db, line);
+	std::getline(input, line);
+	split = split_trim(line, '|');
+	std::cout << split.end()->first << std::endl;
+	return (true);
 }
