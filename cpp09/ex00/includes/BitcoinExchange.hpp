@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 11:36:24 by skapersk          #+#    #+#             */
-/*   Updated: 2024/10/14 15:28:24 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/10/15 14:37:22 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,13 @@ class BitcoinExchange{
             public:
                 const char* what() const throw();
         };
+		class InvalidData: std::exception {
+			public:
+				const char* what() const throw();
+		};
         void checkDataBase();
 		bool parsingLine(const std::string line);
+		bool convert(const std::string input_db);
 };
 
 #endif

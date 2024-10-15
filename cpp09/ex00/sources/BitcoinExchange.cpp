@@ -6,14 +6,22 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 11:03:26 by peanut            #+#    #+#             */
-/*   Updated: 2024/10/14 16:25:46 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/10/15 14:33:16 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
 BitcoinExchange::BitcoinExchange(): _dataValid(false) {
-	checkDataBase();
+	try {
+		checkDataBase();
+	}
+    catch (const noDataInDir &e) {
+        std::cerr << e.what() << std::endl;
+    }
+    catch (const InvalidData &e) {
+        std::cerr << e.what() << std::endl;
+    }
 }
 
 BitcoinExchange::~BitcoinExchange() {
@@ -52,7 +60,7 @@ bool checkLeapYear(std::tm tm){
 }
 
 long getTimestamp(std::string line) {
-	std::tm		tm;
+	std::tm		tm = {};
 	std::time_t time;
 	int			year = 0;
 	int			month = 0;
@@ -74,6 +82,10 @@ long getTimestamp(std::string line) {
 	}
 	if ((month == 4 || month == 6 || month == 9 || month == 11) && day > 30)
 		return (-1);
+    tm.tm_isdst = -1;
+    tm.tm_hour = 0;
+    tm.tm_min = 0;
+    tm.tm_sec = 0;
 	time = std::mktime(&tm);
 	return (time);
 }
@@ -104,10 +116,12 @@ void BitcoinExchange::checkDataBase(void) {
         for (; std::getline(data, line) && this->_dataValid;) {
             if (line == "date,exchange_rate")
                 continue ;
-            if (!parsingLine(line))
+            if (!parsingLine(line)) {
                 this->_dataValid = false;
+				data.close();
+				throw InvalidData();
+			}
         }
-		std::cout << this->_db.begin()->second << std::endl;
     }
     else {
         data.close();
@@ -118,4 +132,8 @@ void BitcoinExchange::checkDataBase(void) {
 
 const char *BitcoinExchange::noDataInDir::what() const throw() {
     return ((char*)"No data file in the directory !");
+}
+
+const char *BitcoinExchange::InvalidData::what() const throw() {
+	return ((char*)"Data from the file is not well formated !");
 }
