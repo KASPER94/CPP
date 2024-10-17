@@ -6,7 +6,7 @@
 /*   By: peanut <peanut@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 11:36:24 by skapersk          #+#    #+#             */
-/*   Updated: 2024/10/17 11:19:02 by peanut           ###   ########.fr       */
+/*   Updated: 2024/10/17 16:28:29 by peanut           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ class BitcoinExchange{
     private:
         bool _dataValid;
 		std::map<long, double>	_db;
+        bool    parseInputLine(std::string input);
+        void    printErrorLine(std::string )
     public:
         BitcoinExchange();
         ~BitcoinExchange();

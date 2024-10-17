@@ -6,7 +6,7 @@
 /*   By: peanut <peanut@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 11:03:26 by peanut            #+#    #+#             */
-/*   Updated: 2024/10/17 11:20:08 by peanut           ###   ########.fr       */
+/*   Updated: 2024/10/17 16:29:20 by peanut           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,20 @@ void	BitcoinExchange::printTop() {
 		<< std::endl;
 }
 
+void	BitcoinExchange::printErrorLine(){
+
+}
+
+bool	BitcoinExchange::parseInputLine(std::string input) {
+	// long		timestamp;
+	std::map<int, std::string>	split;
+
+	split = split_trim(input, '|');
+	if (split.size() != 2 && (split.size() == 1 || split[0] != "")) {
+		this->printErrorLine();
+		return (false);
+	}
+}
 
 bool	BitcoinExchange::convert(const std::string input_db) {
 	std::ifstream				input;
@@ -78,5 +92,10 @@ bool	BitcoinExchange::convert(const std::string input_db) {
 	}
 	else 
 		printTop();
+	for (; std::getline(input, line);) {
+		if (!this->parseInputLine(line))
+			return (false);
+	}
+
 	return (true);
 }
