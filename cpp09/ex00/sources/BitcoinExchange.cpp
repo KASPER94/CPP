@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: peanut <peanut@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 11:03:26 by peanut            #+#    #+#             */
-/*   Updated: 2024/10/15 14:33:16 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/10/16 23:12:42 by peanut           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,4 +136,8 @@ const char *BitcoinExchange::noDataInDir::what() const throw() {
 
 const char *BitcoinExchange::InvalidData::what() const throw() {
 	return ((char*)"Data from the file is not well formated !");
+}
+
+const char *BitcoinExchange::InvalidInput::what() const throw() {
+	return ((char*)"The input is not well formated !");
 }

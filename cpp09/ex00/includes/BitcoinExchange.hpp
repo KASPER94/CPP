@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: peanut <peanut@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 11:36:24 by skapersk          #+#    #+#             */
-/*   Updated: 2024/10/15 14:37:22 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/10/17 11:19:02 by peanut           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,14 @@ class BitcoinExchange{
 			public:
 				const char* what() const throw();
 		};
+        class InvalidInput: std::exception {
+			public:
+				const char* what() const throw();
+		};
         void checkDataBase();
 		bool parsingLine(const std::string line);
 		bool convert(const std::string input_db);
+        void printTop();
 };
 
 #endif

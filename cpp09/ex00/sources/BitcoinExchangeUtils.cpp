@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchangeUtils.cpp                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: peanut <peanut@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 11:03:26 by peanut            #+#    #+#             */
-/*   Updated: 2024/10/15 15:47:29 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/10/17 11:20:08 by peanut           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ void	rtrim(std::string &s) {
 }
 
 void	ltrim(std::string &s) {
-	int	i = s.length() - 1;
+	int	i = 0;
 
 	while (std::isspace(s[i]))
 		i++;
-    s = s.substr(0, i + 1);
+    s = s.substr(i, s.length());
 }
 
 std::map<int, std::string>	split_trim(std::string str, char c) {
@@ -48,6 +48,19 @@ std::map<int, std::string>	split_trim(std::string str, char c) {
 	return (split);
 }
 
+void	BitcoinExchange::printTop() {
+	std::cout <<\
+		"╔════════════════╦═════════════════╦═══════════════════╦══════════════════════════╗" \
+		<< std::endl;
+	std::cout << "║"   "      DATE      "  "║" "   AMOUNT(BTC)   " \
+		"║"  "     AMOUNT($)     " "║"  "         DB ENTRY" \
+		<< "         ║"  << std::endl;
+	std::cout << \
+		"╠════════════════╬═════════════════╬═══════════════════╬══════════════════════════╣" \
+		<< std::endl;
+}
+
+
 bool	BitcoinExchange::convert(const std::string input_db) {
 	std::ifstream				input;
 	std::string					line;
@@ -60,6 +73,10 @@ bool	BitcoinExchange::convert(const std::string input_db) {
 	}
 	std::getline(input, line);
 	split = split_trim(line, '|');
-	std::cout << split.end()->first << std::endl;
+	if (split.size() != 2 || (split[0] != "date" || split[1] != "value")) {
+		throw InvalidInput();
+	}
+	else 
+		printTop();
 	return (true);
 }

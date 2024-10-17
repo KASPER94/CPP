@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: peanut <peanut@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 12:05:50 by skapersk          #+#    #+#             */
-/*   Updated: 2024/10/15 15:23:32 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/10/17 11:16:15 by peanut           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,11 @@ int	main(int ac, char **av) {
 		std::cerr <<  "Error: Argument needed ./btc path/to/<data_base>" << std::endl;
 		return (1);
 	}
-	if (!btc.convert(av[1])) {
-		return (-1);
+	try {
+		btc.convert(av[1]);
+	}
+	catch (const BitcoinExchange::InvalidInput &e) {
+		std::cout << e.what() << std::endl;
 	}
 	return (0);
 }
