@@ -6,7 +6,7 @@
 /*   By: peanut <peanut@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 11:36:24 by skapersk          #+#    #+#             */
-/*   Updated: 2024/10/17 16:28:29 by peanut           ###   ########.fr       */
+/*   Updated: 2024/10/17 19:10:37 by peanut           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,12 @@ class BitcoinExchange{
         bool _dataValid;
 		std::map<long, double>	_db;
         bool    parseInputLine(std::string input);
-        void    printErrorLine(std::string )
+        long    getTimestamp(std::string line);
+        void    printErrorLine(int line);
+        void    printLineDateBtcError(std::string date, std::string btc, int type);
+        void    printLineDateError(std::string date, std::string btc, int type);
+        void    printLinePriceError(std::string date, std::string btc, int type);
+        void    printLine(std::string date, std::string btc, long first, double second);
     public:
         BitcoinExchange();
         ~BitcoinExchange();
@@ -47,6 +52,7 @@ class BitcoinExchange{
 		bool parsingLine(const std::string line);
 		bool convert(const std::string input_db);
         void printTop();
+        void printBottom();
 };
 
 #endif

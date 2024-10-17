@@ -6,7 +6,7 @@
 /*   By: peanut <peanut@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 11:03:26 by peanut            #+#    #+#             */
-/*   Updated: 2024/10/16 23:12:42 by peanut           ###   ########.fr       */
+/*   Updated: 2024/10/17 17:42:05 by peanut           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ bool checkLeapYear(std::tm tm){
 	return (false);
 }
 
-long getTimestamp(std::string line) {
+long BitcoinExchange::getTimestamp(std::string line) {
 	std::tm		tm = {};
 	std::time_t time;
 	int			year = 0;
@@ -97,7 +97,7 @@ bool BitcoinExchange::parsingLine(const std::string line) {
 	if (line.length() < 12) {
 		return (false);
 	}
-	timestamp = getTimestamp(line.substr(0, line.find(",")));
+	timestamp = this->getTimestamp(line.substr(0, line.find(",")));
 	if (timestamp == -1)
 		return (false);
 	int start = line.find(",");
