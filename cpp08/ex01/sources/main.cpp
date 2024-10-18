@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: peanut <peanut@student.42.fr>              +#+  +:+       +#+        */
+/*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 12:05:50 by skapersk          #+#    #+#             */
-/*   Updated: 2024/10/10 00:54:26 by peanut           ###   ########.fr       */
+/*   Updated: 2024/10/18 12:14:01 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 #include <iostream>
 #include <stdlib.h>
 #include <unistd.h>
-#include <array>
 #include <vector>
+#include <algorithm>
 
 int	main(void) {
 	Span sp = Span(5);
-	
+
 	sp.addNumber(6);
 	sp.addNumber(3);
 	sp.addNumber(17);
@@ -47,5 +47,12 @@ int	main(void) {
 			std::cout << "\033[31m" << *it << "\033[0m" << std::endl;
 		std::cout << *it << std::endl;
 	}
+	Span sp3 = Span(0);
+	try {
+		std::cout << sp3.shortestSpan() << std::endl;
+	}
+	    catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
 	return 0;
 }
