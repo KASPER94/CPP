@@ -6,7 +6,7 @@
 /*   By: peanut <peanut@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 11:36:24 by skapersk          #+#    #+#             */
-/*   Updated: 2024/10/10 00:55:08 by peanut           ###   ########.fr       */
+/*   Updated: 2024/10/18 15:41:59 by peanut           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ unsigned int Span::longestSpan(void) {
 }
 
 const char *Span::SpanNotEnoughItems::what() const throw() {
-    return ((char*)"Span has only one item");
+    return ((char*)"Span has not enough items");
 }
 
 const char *Span::SpanLimitReached::what() const throw() {

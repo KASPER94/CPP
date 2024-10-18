@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: peanut <peanut@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 12:05:50 by skapersk          #+#    #+#             */
-/*   Updated: 2024/10/18 12:14:01 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/10/18 15:42:13 by peanut           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,18 @@ int	main(void) {
 			std::cout << "\033[31m" << *it << "\033[0m" << std::endl;
 		std::cout << *it << std::endl;
 	}
+	std::cout << std::endl;
 	Span sp3 = Span(0);
 	try {
 		std::cout << sp3.shortestSpan() << std::endl;
 	}
-	    catch (std::exception &e) {
+	catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
+	try {
+		sp3.addNumber(6);
+	}
+	catch (std::exception &e) {
         std::cout << e.what() << std::endl;
     }
 	return 0;
