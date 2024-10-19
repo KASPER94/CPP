@@ -6,7 +6,7 @@
 /*   By: peanut <peanut@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 15:07:09 by skapersk          #+#    #+#             */
-/*   Updated: 2024/10/20 00:57:34 by peanut           ###   ########.fr       */
+/*   Updated: 2024/10/20 01:25:43 by peanut           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,12 +117,13 @@ bool RPN::checkData(const std::string Data) {
 	split = split_trim(Data, ' ');
 	start = split.size();
 	while (split.size()) {
-		if (split.size() == start && isSign(split.top().c_str())) {
-			this->_rpn.push(split.top());
-			split.pop();
-			std::cout << this->_rpn.top() << std::endl;
+		if (split.size() == start && !isSign(split.top().c_str())) {
+			throw RPN::InvalidData();
 		}
-		else if (split.size() >= 2 && isdigit(split.top()[0])) {
+		else if ((split.size() == 1 || split.size() == 2) && !isdigit(split.top()[0])) {
+			throw RPN::InvalidData();
+		}
+		else if (isdigit(split.top()[0])) {
 			if (!checkNb(split.top())) {
 				throw RPN::InvalidData();
 			}
@@ -130,6 +131,13 @@ bool RPN::checkData(const std::string Data) {
 			split.pop();
 			std::cout << this->_rpn.top() << std::endl;
 		}
+		else if (isSign(split.top().c_str())) {
+			this->_rpn.push(split.top());
+			split.pop();
+			std::cout << this->_rpn.top() << std::endl;
+		}
+		else 
+			throw RPN::InvalidData();
 	}
 	return (true);
 }
