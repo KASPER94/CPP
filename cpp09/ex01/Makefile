@@ -6,11 +6,11 @@
 #    By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/11 15:03:40 by skapersk          #+#    #+#              #
-#    Updated: 2024/10/15 15:23:48 by skapersk         ###   ########.fr        #
+#    Updated: 2024/10/19 15:04:56 by skapersk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = btc
+NAME = RPN
 
 CC = c++
 
@@ -23,8 +23,7 @@ SRC_DIR = sources/
 OBJ_DIR = objects/
 
 SRC = main.cpp \
-	  BitcoinExchange.cpp \
-	  BitcoinExchangeUtils.cpp \
+	  RPN.cpp \
 
 OBJ = $(SRC:.cpp=.o)
 
