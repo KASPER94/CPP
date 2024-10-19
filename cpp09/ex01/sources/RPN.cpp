@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RPN.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: peanut <peanut@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 15:07:09 by skapersk          #+#    #+#             */
-/*   Updated: 2024/10/19 18:01:12 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/10/19 23:28:35 by peanut           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,41 @@ std::stack<std::string>	split_trim(std::string str, char c) {
 	return (split);
 }
 
+std::string dtoa(double nb) {
+	std::ostringstream s;
+	std::string		str;
+
+	s << std::setprecision(8) << std::fixed << nb;
+	str = s.str();
+	str = str.erase(str.find_last_not_of('0') + 1);
+	if (str[str.length() - 1] == '.')
+		str += "0";
+	return (str);
+}
+
+std::string	add(double a, double b) {
+	return (dtoa(a + b));
+}
+
+std::string	sub(double a, double b){
+	return (dtoa(a - b));
+}
+
+std::string	mult(double a, double b){
+	return (dtoa(a * b));
+}
+
+std::string	div(double a, double b){
+	if (b == 0)
+		throw RPN::ImpossibleDividedByZero();
+	return (dtoa(a / b));
+}
+
 bool RPN::checkData(const std::string Data) {
 	std::stack<std::string> split;
 
 	split = split_trim(Data, ' ');
-	std::cout << split.top() << std::endl;
+	
 	return (true);
 }
 
@@ -80,9 +110,13 @@ void	RPN::setData(const std::string Data) {
 	catch (const RPN::InvalidData &e) {
 		std::cerr << e.what() << std::endl;
 	}
-	this->_nbs.push(0);
+	// this->_nbs.push(0);
 }
 
 const char *RPN::InvalidData::what() const throw() {
+	return ((char *)"Data input do not respect the Reverse Polish Notation");
+}
+
+const char *RPN::ImpossibleDividedByZero::what() const throw() {
 	return ((char *)"Data input do not respect the Reverse Polish Notation");
 }
