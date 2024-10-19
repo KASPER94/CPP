@@ -6,14 +6,17 @@
 /*   By: peanut <peanut@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 15:07:09 by skapersk          #+#    #+#             */
-/*   Updated: 2024/10/19 23:28:35 by peanut           ###   ########.fr       */
+/*   Updated: 2024/10/20 00:57:34 by peanut           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
 
 RPN::RPN(){
-
+	this->_calc[0] = &RPN::add;
+	this->_calc[1] = &RPN::sub;
+	this->_calc[2] = &RPN::mult;
+	this->_calc[3] = &RPN::div;
 }
 
 RPN::~RPN(){
@@ -77,31 +80,67 @@ std::string dtoa(double nb) {
 	return (str);
 }
 
-std::string	add(double a, double b) {
+std::string	RPN::add(double a, double b) {
 	return (dtoa(a + b));
 }
 
-std::string	sub(double a, double b){
+std::string	RPN::sub(double a, double b){
 	return (dtoa(a - b));
 }
 
-std::string	mult(double a, double b){
+std::string	RPN::mult(double a, double b){
 	return (dtoa(a * b));
 }
 
-std::string	div(double a, double b){
+std::string	RPN::div(double a, double b){
 	if (b == 0)
 		throw RPN::ImpossibleDividedByZero();
 	return (dtoa(a / b));
 }
 
+static bool	isSign(std::string c) {
+	if (c == "+" || c == "-" || c == "*" || c == "/")
+		return (true);
+	return (false);
+}
+
+static bool	checkNb(std::string c) {
+	if (c.length() == 1)
+		return (true);
+	return (false);
+}
+
 bool RPN::checkData(const std::string Data) {
 	std::stack<std::string> split;
+	size_t	start;
 
 	split = split_trim(Data, ' ');
-	
+	start = split.size();
+	while (split.size()) {
+		if (split.size() == start && isSign(split.top().c_str())) {
+			this->_rpn.push(split.top());
+			split.pop();
+			std::cout << this->_rpn.top() << std::endl;
+		}
+		else if (split.size() >= 2 && isdigit(split.top()[0])) {
+			if (!checkNb(split.top())) {
+				throw RPN::InvalidData();
+			}
+			this->_rpn.push(split.top());
+			split.pop();
+			std::cout << this->_rpn.top() << std::endl;
+		}
+	}
 	return (true);
 }
+
+// void	RPN::calcul() {
+// 	std::string	str;
+// 	char		sign[] = {'+', '-', '*', '/'};
+// 	double		a;
+// 	double		b;
+
+// }
 
 void	RPN::setData(const std::string Data) {
 	try {

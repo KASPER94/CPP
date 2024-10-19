@@ -6,7 +6,7 @@
 /*   By: peanut <peanut@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 15:06:36 by skapersk          #+#    #+#             */
-/*   Updated: 2024/10/19 23:28:18 by peanut           ###   ########.fr       */
+/*   Updated: 2024/10/20 00:26:57 by peanut           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,12 @@
 
 class RPN {
 	private:
+		typedef std::string (RPN::*func)(double, double);
 		std::stack<std::string>	_nbs;
 		std::stack<std::string>	_rpn;
 		func	_calc[4];
 		
-		void	reverseStack();
+		// void	reverseStack();
 		std::string	add(double a, double b);
 		std::string	sub(double a, double b);
 		std::string	mult(double a, double b);
@@ -39,6 +40,7 @@ class RPN {
 		bool parsingLine(const std::string data);
 		bool checkData(const std::string data);
 		void	setData(const std::string Data);
+		// void	calcul();
 		class InvalidData : std::exception {
 			public :
 				const char *what() const throw();
