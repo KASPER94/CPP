@@ -6,7 +6,7 @@
 /*   By: peanut <peanut@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 15:06:36 by skapersk          #+#    #+#             */
-/*   Updated: 2024/10/20 00:26:57 by peanut           ###   ########.fr       */
+/*   Updated: 2024/10/20 01:27:59 by peanut           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ class RPN {
 		bool parsingLine(const std::string data);
 		bool checkData(const std::string data);
 		void	setData(const std::string Data);
-		// void	calcul();
+		void	calcul();
 		class InvalidData : std::exception {
 			public :
 				const char *what() const throw();

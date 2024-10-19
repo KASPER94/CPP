@@ -6,7 +6,7 @@
 /*   By: peanut <peanut@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 15:07:09 by skapersk          #+#    #+#             */
-/*   Updated: 2024/10/20 01:25:43 by peanut           ###   ########.fr       */
+/*   Updated: 2024/10/20 01:49:58 by peanut           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,12 @@ static bool	isSign(std::string c) {
 	return (false);
 }
 
+// static bool	isSign(char c) {
+// 	if (c == '+' || c == '-' || c == '*' || c == '/')
+// 		return (true);
+// 	return (false);
+// }
+
 static bool	checkNb(std::string c) {
 	if (c.length() == 1)
 		return (true);
@@ -142,13 +148,50 @@ bool RPN::checkData(const std::string Data) {
 	return (true);
 }
 
-// void	RPN::calcul() {
-// 	std::string	str;
-// 	char		sign[] = {'+', '-', '*', '/'};
-// 	double		a;
-// 	double		b;
+void	RPN::calcul() {
+	std::string	str;
+	char		sign[] = {'+', '-', '*', '/'};
+	double		a = 0;
+	double		b = 0;
+	size_t		start;
 
-// }
+	start = this->_rpn.size();
+	while (this->_rpn.size()) {
+		if (this->_rpn.size() == start) {
+			a = std::atof(this->_rpn.top().c_str());
+			this->_rpn.pop();
+			b = std::atof(this->_rpn.top().c_str());
+			this->_rpn.pop();
+			str = this->_rpn.top();
+			this->_rpn.pop();
+			for (int i = 0; i < 4; i++) {
+				if (str[0] == sign[i])
+					this->_nbs.push((this->*_calc[i])(a, b));
+			}
+		}
+		else if (this->_rpn.size() == 1 && !isSign(this->_rpn.top())) {
+			throw RPN::InvalidData();
+		}
+		else if (this->_rpn.size() >= 1) {
+			a = std::atof(this->_nbs.top().c_str());
+			this->_nbs.pop();
+			b = std::atof(this->_rpn.top().c_str());
+			this->_rpn.pop();
+			str = this->_rpn.top();
+			this->_rpn.pop();
+			for (int i = 0; i < 4; i++) {
+				if (str[0] == sign[i])
+					this->_nbs.push((this->*_calc[i])(a, b));
+			}
+		}
+		else {
+			// this->_nbs.push(str);
+			std::cout << std::endl;
+		}
+	}
+			std::cout << this->_nbs.top().c_str() << std::endl;
+
+}
 
 void	RPN::setData(const std::string Data) {
 	try {
@@ -157,7 +200,6 @@ void	RPN::setData(const std::string Data) {
 	catch (const RPN::InvalidData &e) {
 		std::cerr << e.what() << std::endl;
 	}
-	// this->_nbs.push(0);
 }
 
 const char *RPN::InvalidData::what() const throw() {
