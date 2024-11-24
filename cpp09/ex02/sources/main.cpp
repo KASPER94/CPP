@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 15:06:59 by skapersk          #+#    #+#             */
-/*   Updated: 2024/11/24 17:28:46 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/11/24 18:44:23 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,9 +101,9 @@ static void	printEntries(std::vector<unsigned int> &vec, unsigned int maxLen) {
 }
 
 
-static void(PmergeMe &pmm, std::vector<unsigned int> entries) {
+static void sort(PmergeMe &pmm, std::vector<unsigned int> entries) {
 	unsigned long vecIn, vecOut;
-	unsigned long listIn, listOut;
+	// unsigned long listIn, listOut;
 
 	std::cout << "sorting Vector... " << std::endl;
 	vecIn = getTime();
@@ -117,10 +117,11 @@ static void(PmergeMe &pmm, std::vector<unsigned int> entries) {
 	// listOut = getTime();
 	// std::cout << "Done. \n\n" << std::endl;
 
-	std::cout << "Before : " << printEntries(entries, 20);
+	std::cout << "Before : ";
+	printEntries(entries, 20);
 	std::cout << std::endl;
 	std::cout << "After: ";
-	std::cout << pmm.printVector(20);
+	pmm.printVector(20);
 	std::cout << std::endl;
 	std::cout << "  Time to process a range of " << entries.size();
 	std::cout << " elements: " << vecOut - vecIn;
@@ -152,6 +153,6 @@ int	main(int ac, char **av) {
 	}
 	std::cout << " ✅  All arguments are unsigned long and there is no duplicates" << std::endl;
 	std::cout << "\nStarting sortings..." << std::endl;
-	sort (pmm, entries);
+	sort(pmm, entries);
 	return (0);
 }
