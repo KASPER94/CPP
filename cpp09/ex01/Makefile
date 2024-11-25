@@ -6,7 +6,7 @@
 #    By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/11 15:03:40 by skapersk          #+#    #+#              #
-#    Updated: 2024/10/19 15:04:56 by skapersk         ###   ########.fr        #
+#    Updated: 2024/11/25 17:12:38 by skapersk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = c++
 
 INCLUDES = includes/
 
-CFLAGS = -Wall -Werror -Wextra -std=c++98 -I $(INCLUDES)
+CFLAGS = -Wall -Werror -Wextra -std=c++98 -g -I $(INCLUDES)
 
 SRC_DIR = sources/
 

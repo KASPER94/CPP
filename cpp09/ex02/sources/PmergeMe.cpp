@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 15:06:36 by skapersk          #+#    #+#             */
-/*   Updated: 2024/11/25 14:03:44 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/11/25 14:16:42 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,25 +109,24 @@ void PmergeMe::JacobsthalGroupVector() {
         357913942, 715827882, 1431655766, 2863311530
     };
 	std::vector<ui>::iterator it;
-	int x = 1, y = 0, i = 0;
-	int xMax, yMax;
-	
-	while (static_cast<unsigned long>(yMax) > this->pending_container.size()) {
-		unsigned long dist = jacobsthal_diff[i];
-		yMax = y + dist;
-		xMax = x + dist;
-		while (yMax-- != y) {
-			it = std::lower_bound(main_container.begin(), main_container.begin() + xMax, pending_container[yMax]);
-			main_container.insert(it, pending_container[yMax]);
-		}
-		x += dist * 2;
-		y += dist;
-	}
-	yMax = pending_container.size();
-	while (yMax-- != y) {
-		it = std::lower_bound(main_container.begin(), main_container.begin() + xMax, pending_container[yMax]);
-		main_container.insert(it, pending_container[yMax]);	
-	}
+    int x = 1, y = 0, i = 0;
+    int xMax, yMax;
+
+    while (y < static_cast<int>(this->pending_container.size())) {
+        unsigned long dist = jacobsthal_diff[i++];
+        yMax = y + dist;
+        xMax = x + dist;
+
+        if (yMax > static_cast<int>(this->pending_container.size())) {
+            yMax = this->pending_container.size();
+        }
+        while (yMax-- != y) {
+            it = std::lower_bound(main_container.begin(), main_container.begin() + xMax, pending_container[yMax]);
+            main_container.insert(it, pending_container[yMax]);
+        }
+        x += dist * 2;
+        y += dist;
+    }
 }
 
 void	PmergeMe::printVector(ui nb) {

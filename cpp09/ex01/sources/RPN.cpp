@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RPN.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: peanut <peanut@student.42.fr>              +#+  +:+       +#+        */
+/*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 15:07:09 by skapersk          #+#    #+#             */
-/*   Updated: 2024/10/20 01:49:58 by peanut           ###   ########.fr       */
+/*   Updated: 2024/11/25 17:46:13 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ RPN::RPN(const RPN &cpy) {
 
 RPN &RPN::operator=(const RPN &rhs) {
 	this->_nbs= rhs._nbs;
+	this->_rpn= rhs._rpn;
 	return (*this);
 }
 
@@ -135,12 +136,12 @@ bool RPN::checkData(const std::string Data) {
 			}
 			this->_rpn.push(split.top());
 			split.pop();
-			std::cout << this->_rpn.top() << std::endl;
+			// std::cout << this->_rpn.top() << std::endl;
 		}
 		else if (isSign(split.top().c_str())) {
 			this->_rpn.push(split.top());
 			split.pop();
-			std::cout << this->_rpn.top() << std::endl;
+			// std::cout << this->_rpn.top() << std::endl;
 		}
 		else 
 			throw RPN::InvalidData();
@@ -148,58 +149,93 @@ bool RPN::checkData(const std::string Data) {
 	return (true);
 }
 
-void	RPN::calcul() {
-	std::string	str;
-	char		sign[] = {'+', '-', '*', '/'};
-	double		a = 0;
-	double		b = 0;
-	size_t		start;
+// void	RPN::calcul() {
+// 	try {
+// 		std::string	str;
+// 		char		sign[] = {'+', '-', '*', '/'};
+// 		double		a = 0;
+// 		double		b = 0;
+// 		size_t		start;
 
-	start = this->_rpn.size();
-	while (this->_rpn.size()) {
-		if (this->_rpn.size() == start) {
-			a = std::atof(this->_rpn.top().c_str());
-			this->_rpn.pop();
-			b = std::atof(this->_rpn.top().c_str());
-			this->_rpn.pop();
-			str = this->_rpn.top();
-			this->_rpn.pop();
+// 		start = this->_rpn.size();
+// 		while (this->_rpn.size()) {
+// 			if (this->_rpn.size() == start) {
+// 				a = std::atof(this->_rpn.top().c_str());
+// 				this->_rpn.pop();
+// 				b = std::atof(this->_rpn.top().c_str());
+// 				this->_rpn.pop();
+// 				str = this->_rpn.top();
+// 				this->_rpn.pop();
+// 				for (int i = 0; i < 4; i++) {
+// 					if (str[0] == sign[i])
+// 						this->_nbs.push((this->*_calc[i])(a, b));
+// 				}
+// 			}
+// 			else if (this->_rpn.size() == 1 && !isSign(this->_rpn.top())) {
+// 				throw RPN::InvalidData();
+// 			}
+// 			else if (this->_rpn.size() >= 1) {
+// 				a = std::atof(this->_nbs.top().c_str());
+// 				this->_nbs.pop();
+// 				b = std::atof(this->_rpn.top().c_str());
+// 				this->_rpn.pop();
+// 				str = this->_rpn.top();
+// 				std::cerr << "#### " << this->_rpn.top();
+
+// 				this->_rpn.pop();
+// 				for (int i = 0; i < 4; i++) {
+// 					if (str[0] == sign[i])
+// 						this->_nbs.push((this->*_calc[i])(a, b));
+// 				}
+// 			}
+// 			else {
+// 				std::cout << std::endl;
+// 			}
+// 		}
+// 		std::cout << this->_nbs.top().c_str() << std::endl;
+// 	}
+// 	catch (const RPN::ImpossibleDividedByZero &e) {
+//         std::cerr << "Error: Division by zero is not allowed!" << std::endl;
+//     }
+// }
+
+void RPN::calcul() {
+	char sign[] = {'+', '-', '*', '/'};
+	std::stack<double> operandStack;
+
+	while (!this->_rpn.empty()) {
+		std::string token = this->_rpn.top();
+		this->_rpn.pop();
+
+		if (isSign(token)) {
+			if (operandStack.size() < 2) {
+				throw RPN::InvalidData();
+			}
+			double b = operandStack.top();
+			operandStack.pop();
+			double a = operandStack.top();
+			operandStack.pop();
+
+			double result = 0;
 			for (int i = 0; i < 4; i++) {
-				if (str[0] == sign[i])
+				if (token == std::string(1, sign[i]))
 					this->_nbs.push((this->*_calc[i])(a, b));
 			}
-		}
-		else if (this->_rpn.size() == 1 && !isSign(this->_rpn.top())) {
-			throw RPN::InvalidData();
-		}
-		else if (this->_rpn.size() >= 1) {
-			a = std::atof(this->_nbs.top().c_str());
-			this->_nbs.pop();
-			b = std::atof(this->_rpn.top().c_str());
-			this->_rpn.pop();
-			str = this->_rpn.top();
-			this->_rpn.pop();
-			for (int i = 0; i < 4; i++) {
-				if (str[0] == sign[i])
-					this->_nbs.push((this->*_calc[i])(a, b));
-			}
-		}
-		else {
-			// this->_nbs.push(str);
-			std::cout << std::endl;
+			operandStack.push(result);
+		} else {
+			operandStack.push(std::atof(token.c_str()));
 		}
 	}
-			std::cout << this->_nbs.top().c_str() << std::endl;
 
+	if (operandStack.size() != 1) {
+		throw RPN::InvalidData();
+	}
+std::cout << operandStack.top() << std::endl;
 }
 
+
 void	RPN::setData(const std::string Data) {
-	try {
 		checkData(Data);
-	}
-	catch (const RPN::InvalidData &e) {
-		std::cerr << e.what() << std::endl;
-	}
 }
 
 const char *RPN::InvalidData::what() const throw() {
@@ -207,5 +243,5 @@ const char *RPN::InvalidData::what() const throw() {
 }
 
 const char *RPN::ImpossibleDividedByZero::what() const throw() {
-	return ((char *)"Data input do not respect the Reverse Polish Notation");
+	return ((char *)"Error: Division by zero is not allowed!");
 }
