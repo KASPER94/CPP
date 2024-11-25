@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 15:06:59 by skapersk          #+#    #+#             */
-/*   Updated: 2024/11/25 17:40:56 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/11/25 18:35:14 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int ac, char **av) {
 		std::cerr << "./RPN needs an argement and only one like : ./RPN \"8 9 * 9 - 9 - 9 - 4 - 1 +\"" << std::endl;
 	}
 	try {
-		lst.setData(av[1]);
+		lst.checkData(av[1]);
 		lst.calcul();
 	}
 	catch (RPN::ImpossibleDividedByZero &e) {
