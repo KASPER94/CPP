@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 15:06:59 by skapersk          #+#    #+#             */
-/*   Updated: 2024/11/24 18:44:23 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/11/25 14:05:33 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ static void sort(PmergeMe &pmm, std::vector<unsigned int> entries) {
 	std::cout << "After: ";
 	pmm.printVector(20);
 	std::cout << std::endl;
-	std::cout << "  Time to process a range of " << entries.size();
+	std::cout << "Time to process a range of " << entries.size();
 	std::cout << " elements: " << vecOut - vecIn;
 	std::cout << " µs (";
 	std::cout << dtoa(static_cast<double>(vecOut - vecIn) / 1000000.0) << " s)\n" << std::endl;

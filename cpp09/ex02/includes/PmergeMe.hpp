@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 15:06:36 by skapersk          #+#    #+#             */
-/*   Updated: 2024/11/24 19:25:24 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/11/25 14:07:04 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ class PmergeMe {
 		void							sortPairVector();
 		std::vector<std::pair<ui, ui> >	mergeSortPairVector(std::vector<std::pair<ui, ui> > tmp);
 		void							prepareForBinarySearchVector();
-		void							binarySearchVector();
 		void							JacobsthalGroupVector();
 	public:
 		PmergeMe();
