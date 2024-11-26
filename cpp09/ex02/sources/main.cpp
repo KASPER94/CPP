@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 15:06:59 by skapersk          #+#    #+#             */
-/*   Updated: 2024/11/25 14:05:33 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/11/26 17:10:31 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,35 +90,33 @@ static std::string dtoa(double nb) {
 	return (str);
 }
 
-static void	printEntries(std::vector<unsigned int> &vec, unsigned int maxLen) {
-	unsigned int size = vec.size();
-
-	for (unsigned int i = 0; i < size && i < maxLen; i++) {
-		std::cout << vec[i] << " ";
-    }
-	if (size > maxLen)
+template <typename container>
+static void	printEntries(const container &cont, unsigned int maxLen) {
+	typename container::const_iterator it = cont.begin();
+	size_t count = 0;
+	for (; it != cont.end() && count < maxLen; ++it, ++count) {
+		std::cout << *it << " ";
+	}
+	if (cont.size() > maxLen) {
 		std::cout << "[...]";
+	}
+	std::cout << std::endl;
 }
 
-
-static void sort(PmergeMe &pmm, std::vector<unsigned int> entries) {
+template <typename container>
+static void sort(PmergeMe &pmm, const container entries) {
 	unsigned long vecIn, vecOut;
-	// unsigned long listIn, listOut;
+	unsigned long listIn, listOut;
 
 	std::cout << "sorting Vector... " << std::endl;
 	vecIn = getTime();
-	pmm.sortVector(entries);
+	std::vector<ui> vecEntries(entries.begin(), entries.end());
+	pmm.sortVector(vecEntries);
 	vecOut = getTime();
 	std::cout << "Done." << std::endl;
 
-	// std::cout << "sorting List... " << std::endl;
-	// listIn = getTime();
-	// pmm.sortList(entries);
-	// listOut = getTime();
-	// std::cout << "Done. \n\n" << std::endl;
-
 	std::cout << "Before : ";
-	printEntries(entries, 20);
+	printEntries(vecEntries, 20);
 	std::cout << std::endl;
 	std::cout << "After: ";
 	pmm.printVector(20);
@@ -127,7 +125,25 @@ static void sort(PmergeMe &pmm, std::vector<unsigned int> entries) {
 	std::cout << " elements: " << vecOut - vecIn;
 	std::cout << " µs (";
 	std::cout << dtoa(static_cast<double>(vecOut - vecIn) / 1000000.0) << " s)\n" << std::endl;
+	std::cout << std::endl;
 
+	std::cout << "sorting List... " << std::endl;
+	listIn = getTime();
+	std::list<ui> listEntries(entries.begin(), entries.end());
+	pmm.sortList(listEntries);
+	listOut = getTime();
+	std::cout << "Done. \n\n" << std::endl;
+
+	std::cout << "Before : ";
+	printEntries(listEntries, 20);
+	std::cout << std::endl;
+	std::cout << "After: ";
+	pmm.printList(20);
+	std::cout << std::endl;
+	std::cout << "Time to process a range of " << entries.size();
+	std::cout << " elements: " << listOut - listIn;
+	std::cout << " µs (";
+	std::cout << dtoa(static_cast<double>(listOut - listIn) / 1000000.0) << " s)\n" << std::endl;
 }
 
 int	main(int ac, char **av) {
