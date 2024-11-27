@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 15:06:59 by skapersk          #+#    #+#             */
-/*   Updated: 2024/11/26 17:10:31 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/11/27 23:59:58 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,20 @@ static void	printEntries(const container &cont, unsigned int maxLen) {
 	std::cout << std::endl;
 }
 
+template <typename Container>
+void printContainer(const Container &container, unsigned int maxLen) {
+    typename Container::const_iterator it = container.begin();
+    size_t count = 0;
+
+    for (; it != container.end() && count < maxLen; ++it, ++count) {
+        std::cout << *it << " ";
+    }
+    if (container.size() > maxLen) {
+        std::cout << "[...]";
+    }
+    std::cout << std::endl;
+}
+
 template <typename container>
 static void sort(PmergeMe &pmm, const container entries) {
 	unsigned long vecIn, vecOut;
@@ -117,10 +131,8 @@ static void sort(PmergeMe &pmm, const container entries) {
 
 	std::cout << "Before : ";
 	printEntries(vecEntries, 20);
-	std::cout << std::endl;
-	std::cout << "After: ";
-	pmm.printVector(20);
-	std::cout << std::endl;
+	std::cout << "After :  ";
+	printContainer(pmm.getVec(), 20);
 	std::cout << "Time to process a range of " << entries.size();
 	std::cout << " elements: " << vecOut - vecIn;
 	std::cout << " µs (";
@@ -132,14 +144,12 @@ static void sort(PmergeMe &pmm, const container entries) {
 	std::list<ui> listEntries(entries.begin(), entries.end());
 	pmm.sortList(listEntries);
 	listOut = getTime();
-	std::cout << "Done. \n\n" << std::endl;
+	std::cout << "Done. " << std::endl;
 
 	std::cout << "Before : ";
 	printEntries(listEntries, 20);
-	std::cout << std::endl;
-	std::cout << "After: ";
-	pmm.printList(20);
-	std::cout << std::endl;
+	std::cout << "After :  ";
+	printContainer(pmm.getList(), 20);
 	std::cout << "Time to process a range of " << entries.size();
 	std::cout << " elements: " << listOut - listIn;
 	std::cout << " µs (";
@@ -155,7 +165,7 @@ int	main(int ac, char **av) {
 		std::cerr << "Error: Wrong entries. you can use ./PmergeMe `shuf -i 1-100000 -n 3000 | tr \"\\n\" \" \"`" << std::endl;
 		return (1);
 	}
-	std::cout << "\nVerifying the input array..." << std::endl;
+	std::cout << "Verifying the input array..." << std::endl;
 	while (av[++i]) {
 		if (!checkInt(av[i])) {
 			std::cerr << " ❌ " << av[i] << " is not an unsigned integer" << std::endl;

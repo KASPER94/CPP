@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: peanut <peanut@student.42.fr>              +#+  +:+       +#+        */
+/*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 11:36:24 by skapersk          #+#    #+#             */
-/*   Updated: 2024/10/17 19:10:37 by peanut           ###   ########.fr       */
+/*   Updated: 2024/11/27 15:25:36 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,14 @@
 # include <iostream>
 # include <stdlib.h>
 # include <fstream>
+# include <iomanip>
 # include <ctime>
 # include <map>
 
 class BitcoinExchange{
     private:
         bool _dataValid;
+		std::string _errorMessage;
 		std::map<long, double>	_db;
         bool    parseInputLine(std::string input);
         long    getTimestamp(std::string line);
@@ -47,6 +49,14 @@ class BitcoinExchange{
         class InvalidInput: std::exception {
 			public:
 				const char* what() const throw();
+		};
+		class InvalidInputFile: std::exception {
+			private:
+				std::string _errorMessage;
+			public:
+				InvalidInputFile(const std::string &filename): _errorMessage("No input file named " + filename) {};
+				virtual ~InvalidInputFile() throw() {};
+				virtual const char* what() const throw();
 		};
         void checkDataBase();
 		bool parsingLine(const std::string line);

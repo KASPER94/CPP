@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: peanut <peanut@student.42.fr>              +#+  +:+       +#+        */
+/*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 11:03:26 by peanut            #+#    #+#             */
-/*   Updated: 2024/10/17 17:42:05 by peanut           ###   ########.fr       */
+/*   Updated: 2024/11/27 15:09:55 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ BitcoinExchange::BitcoinExchange(const BitcoinExchange &cpy) {
 
 BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &rhs){
 	this->_db = rhs._db;
+	this->_dataValid = rhs._dataValid;
 	return (*this);
 }
 
@@ -140,4 +141,8 @@ const char *BitcoinExchange::InvalidData::what() const throw() {
 
 const char *BitcoinExchange::InvalidInput::what() const throw() {
 	return ((char*)"The input is not well formated !");
+}
+
+const char *BitcoinExchange::InvalidInputFile::what() const throw() {
+	return (_errorMessage.c_str());
 }

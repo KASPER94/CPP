@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 15:06:36 by skapersk          #+#    #+#             */
-/*   Updated: 2024/11/26 17:27:01 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/11/28 00:00:33 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ std::vector<std::pair<ui, ui> >	PmergeMe::mergeSortPairVector(std::vector<std::p
 	while (j < rigth.size()) {
 		tmp[k] = rigth[j];
 		j++;
-		i++;
+		k++;
 	}
 	return (tmp);
 }
@@ -131,16 +131,6 @@ void PmergeMe::JacobsthalGroupVector() {
     }
 }
 
-void	PmergeMe::printVector(ui nb) {
-	ui	size = this->main_container.size();
-
-	for (unsigned int i = 0; i < this->main_container.size() && i < nb; i++) {
-		std::cout << this->main_container[i] << " ";
-	}
-	if (size > nb)
-		std::cout << "[...]";
-}
-
 void	PmergeMe::sortVector(const std::vector<ui> &vec) {
 	this->main_container = vec;
 	this->sortPairVector();
@@ -150,13 +140,16 @@ void	PmergeMe::sortVector(const std::vector<ui> &vec) {
 }
 
 void PmergeMe::sortPairList() {
+	int odd = this->main_list.size() % 2;
+	int size = this->main_list.size();
+	int i = 0;
+
 	std::list<ui>::iterator it = main_list.begin();
-	while (it != main_list.end()) {
+	while (it != main_list.end() && i < size - odd) {
 		std::list<ui>::iterator next_it = it;
 		++next_it;
 		if (next_it == main_list.end())
 			break;
-
 		if (*it < *next_it) {
 			pair_list.push_back(std::make_pair(*it, *next_it));
 		} else {
@@ -164,6 +157,7 @@ void PmergeMe::sortPairList() {
 		}
 		it = next_it;
 		++it;
+		i++;
 	}
 }
 
@@ -195,23 +189,31 @@ std::list<std::pair<ui, ui> > PmergeMe::mergeSortPairList(std::list<std::pair<ui
 	}
 	result.insert(result.end(), it_left, left.end());
 	result.insert(result.end(), it_right, right.end());
-
 	return result;
 }
 
 void PmergeMe::prepareForBinarySearchList() {
-	std::list<std::pair<ui, ui> >::iterator it = pair_list.begin();
-	main_list.clear();
-	pending_list.clear();
+    bool odd = (this->main_list.size() % 2) == 1;
+	std::list<ui>::iterator last_element = main_list.end();
+	--last_element;
+	ui tmp = *last_element;
+    std::list<std::pair<ui, ui> >::iterator it = pair_list.begin();
 
-	if (it != pair_list.end()) {
-		main_list.push_back(it->first);
-		++it;
-	}
-	for (; it != pair_list.end(); ++it) {
-		main_list.push_back(it->second);
-		pending_list.push_back(it->first);
-	}
+    main_list.clear();
+    pending_list.clear();
+
+    if (it != pair_list.end()) {
+        main_list.push_back(it->first);
+        main_list.push_back(it->second);
+        ++it;
+    }
+    for (; it != pair_list.end(); ++it) {
+        main_list.push_back(it->second);
+        pending_list.push_back(it->first);
+    }
+    if (odd) {
+		pending_list.push_back(tmp);
+    }
 }
 
 void PmergeMe::JacobsthalGroupList() {
@@ -229,31 +231,16 @@ void PmergeMe::JacobsthalGroupList() {
 		std::list<ui>::iterator pending_it = pending_list.begin();
 		std::advance(pending_it, y);
 
-		for (size_t j = 0; j < group_size; ++j) {
-			std::list<ui>::iterator insert_pos = std::lower_bound(
-				main_list.begin(),
-				main_list.end(),
-				*pending_it
-			);
-			main_list.insert(insert_pos, *pending_it);
-			++pending_it;
-		}
+        for (size_t j = 0; j < group_size; ++j) {
+            std::list<ui>::iterator insert_pos = main_list.begin();
+            while (insert_pos != main_list.end() && *insert_pos < *pending_it) {
+                ++insert_pos;
+            }
+            main_list.insert(insert_pos, *pending_it);
+            ++pending_it;
+        }
 		y += group_size;
 	}
-}
-
-
-void PmergeMe::printList(ui nb) {
-	std::list<ui>::iterator it = main_list.begin();
-	size_t count = 0;
-
-	for (; it != main_list.end() && count < nb; ++it, ++count) {
-		std::cout << *it << " ";
-	}
-	if (main_list.size() > nb) {
-		std::cout << "[...]";
-	}
-	std::cout << std::endl;
 }
 
 void PmergeMe::sortList(const std::list<ui> &lst) {
@@ -262,4 +249,12 @@ void PmergeMe::sortList(const std::list<ui> &lst) {
 	pair_list = mergeSortPairList(pair_list);
 	prepareForBinarySearchList();
 	JacobsthalGroupList();
+}
+
+std::list<ui> PmergeMe::getList() {
+	return (main_list);
+}
+
+std::vector<ui> PmergeMe::getVec(){
+	return (main_container);
 }

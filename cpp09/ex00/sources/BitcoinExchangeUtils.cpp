@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchangeUtils.cpp                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: peanut <peanut@student.42.fr>              +#+  +:+       +#+        */
+/*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 11:03:26 by peanut            #+#    #+#             */
-/*   Updated: 2024/10/17 19:32:39 by peanut           ###   ########.fr       */
+/*   Updated: 2024/11/27 15:25:55 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -236,7 +236,7 @@ bool	BitcoinExchange::convert(const std::string input_db) {
 	input.open(input_db.c_str());
 	if (!input.good()) {
 		input.close();
-		return (false);
+		throw InvalidInputFile(input_db);
 	}
 	std::getline(input, line);
 	split = split_trim(line, '|');

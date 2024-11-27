@@ -6,7 +6,7 @@
 /*   By: skapersk <skapersk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 15:06:36 by skapersk          #+#    #+#             */
-/*   Updated: 2024/11/26 17:14:48 by skapersk         ###   ########.fr       */
+/*   Updated: 2024/11/27 23:58:15 by skapersk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ class PmergeMe {
 		void	printVector(ui nb);
 		void	sortList(const std::list<ui> &lst);
 		void	printList(ui nb);
+		std::list<ui> getList();
+		std::vector<ui> getVec();
 };
 
 #endif
